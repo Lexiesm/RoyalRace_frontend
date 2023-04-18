@@ -1,0 +1,112 @@
+/* BASIC */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+body {
+  background-color: #191414;
+}
+
+/* UTILITY */
+
+.name {
+  color: #91be1d;
+}
+
+body {
+  font-family: calibri;
+}
+/* NAVBAR */
+
+header {
+  background: #91be1d;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #2e2c2c ;
+  color:#191414;
+}
+
+.navbar {
+  padding: 10px 50px;
+  max-width: 100%;
+  max-height: 13vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-display {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color:#191414;
+}
+
+.logo-display:hover {
+  fill: white;
+  color: white;
+}
+
+.logo-image {
+  width: 3vw;
+  height: auto;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.7vw;
+  color:#191414;
+}
+
+.navbar-links-container {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.navbar-link {
+  font-size: 1vw;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.5s ease-in;
+  color:#191414;
+
+}
+
+.navbar-element:hover > .navbar-link  {
+  color: white;
+}
+
+/* FOOTER */
+
+.footer {
+  font-size: 8px;
+  background-color: #191414;
+  border-top: 1px solid #2e2c2c ;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 10px 0px;
+  text-align: center;
+}
+
+@media screen and (max-width: 850px) {
+
+  .title {
+      font-size: 15px;
+  }
+  .logo-image {
+      width: 27px;
+  }
+
+  .navbar-link {
+      font-size: 9px;
+  }
+
+}
