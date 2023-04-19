@@ -8,7 +8,7 @@ export default function LandingPage() {
         <div className="bg-container"></div>
         <div className="content">
             <h1><span className="name">Royal Race</span></h1>
-            <h3>¿Preparadx para ser coronado?</h3>
+            <h3>¿Preparadx para ser coronadx?</h3>
             <Link className="play-button" to="/">
                 Iniciar sesión
             </Link>
