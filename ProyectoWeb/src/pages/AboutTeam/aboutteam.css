@@ -1,0 +1,71 @@
+main {
+    width: 100%;
+    height: 87.5vh;
+    
+}
+.content-equipo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    text-align: justify;
+    gap: 30px;
+    flex-direction: row;
+}
+
+
+.ficha{
+    width: 300px;
+    height: 390px;
+    margin: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+    cursor: default;
+    transition: all 400ms ease;
+
+}
+
+
+.ficha img{
+    width: 100%;
+    height: 220px;
+}
+
+.ficha .contenido-ficha{
+    padding: 15px;
+    text-align: center;
+
+}
+
+.ficha .contenido-ficha p{
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.5;
+    color: #6a6a6a;
+}
+
+.ficha .contenido-ficha h3{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 400;
+    margin-bottom: 0px;
+    color: black;
+}
+
+.ficha .contenido-ficha a{
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    margin-top: 10px;
+    bottom: 0; 
+    color: #91be1d;
+    border: 1px solid #91be1d;
+    border-radius: 4px;
+    transition: all 400ms ease;
+}
+
+.ficha .contenido-ficha a:hover{
+    background: #91be1d;
+    color:#fff;
+}
