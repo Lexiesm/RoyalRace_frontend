@@ -7,7 +7,7 @@ import LandingPage from '../pages/LandingPage/LandingPage';
 import AboutTeam from '../pages/AboutTeam/AboutTeam';
 import Principal from '../pages/Principal/Principal';
 import Layout from '../pages/Layout';
-import Reglas from '../game/Rules';
+import Rules from '../game/Rules';
 
 function Router() {
   const router = createBrowserRouter([
@@ -28,7 +28,7 @@ function Router() {
           element: <Principal/>
         },
         { path: 'reglas',
-          element: <Reglas/>
+          element: <Rules/>
         }
       ]
     },

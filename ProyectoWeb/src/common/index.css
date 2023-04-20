@@ -9,6 +9,9 @@
 
 body {
   background-color: #191414;
+  background-image: url('../assets/imgs/wall.jpg');
+  background-size: 600px;
+  background-repeat: repeat;
 }
 
 /* UTILITY */

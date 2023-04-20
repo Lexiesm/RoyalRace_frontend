@@ -4,6 +4,11 @@ main {
     
 }
 
+.nameP {
+    background-color: #191414;
+    color:#91be1d;
+}
+
 .bg-container {
     position: absolute;
     width: 100%;
@@ -29,6 +34,7 @@ main {
 .principal-content h3{
     font-family: 'Courier New', Courier, monospace;
     max-width: 330px;
+    background-color: #191414;
 }
 
 .play-button {

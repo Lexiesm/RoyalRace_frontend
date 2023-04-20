@@ -1,6 +1,60 @@
-body {
+main {
+  padding: 32px;
+}
+
+div {
     margin: 0;
     padding: 0;
-    color: white;
     text-align: center;
+    color: #191414;
   }
+img {
+  background-color: #191414;
+}
+
+.icono {
+  margin: 3%;
+  padding: 0;
+
+}
+
+.rules {
+  margin: 3%;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.rules h1{
+  background-color: #191414;
+  font-size: 40px;
+}
+
+.tablarules{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  margin: 20px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #91be1d;
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+  cursor: default;
+  transition: all 400ms ease;
+
+}
+
+.Elementorules{
+  padding: 10px;
+}
+
+.Elementorules h2{
+  font-size: 35px;
+  padding: 15px;
+}
+
+.Elementorules p{
+  font-size: 20px;
+  padding: 25px;
+}
