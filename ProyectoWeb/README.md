@@ -14,7 +14,7 @@ Hasta el momento los botones de Iniciar sesión, Registrarse, Iniciar Partida y 
 
 ## Elementos dinámicos 🚂
 
-Los elementos dinámicos de la página Reglas fueron realizados con _useState_ para crear estados, _useEffect_ para realizar el efecto del icono que va cambiando de imagen despues de un tiempo determinado tanto para los objetos como para las casillas y con elementos _onClick_ para poder realizar las funciones de avanzar o retroceder en la información de las reglas al dar click en los respectivos botones.
+Los elementos dinámicos de la página Reglas fueron realizados con _useState_ para crear estados, _useEffect_ para realizar el efecto del icono que va cambiando de imagen despues de un tiempo determinado tanto para los objetos como para las casillas y con elementos _onClick_ para poder realizar las funciones de avanzar o retroceder en la información de las reglas al dar click en los respectivos botones. Los iconos que explican cada elemento de casilla y objetos se demoran 4 segundos en cambiar.
 
 ## Elementos importantes del juego 👑
 
