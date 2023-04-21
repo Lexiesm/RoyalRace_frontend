@@ -58,7 +58,29 @@ export default function Rules() {
       default:
         icono = null;
     }
-  
+
+    const [ReglaActual, setReglaActual] = useState(0);
+
+    useEffect(() => {
+       const intervalo2 = setInterval(() => {
+         // Cambiar el ícono actual por el siguiente
+         setReglaActual(ReglaActual => (ReglaActual === 4 ? 0 : ReglaActual + 1));
+       }, 3000);
+   
+       // Limpiar el intervalo al desmontar el componente
+       return () => clearInterval(intervalo2);
+     }, []);
+    
+    const Regla =[
+      { titulo: "Objetivo", cuerpo: "El objetivo es llegar al centro del tablero primero, para así obtener la corona."},
+      { titulo: "Jugadas", cuerpo: "En cada turno puedes comprar en la tienda, y este se acaba cuando eliges entre utilizar un objeto o avanzar."},
+      { titulo: "Movimientos", cuerpo: "Si decides avanzar, sólo puedes moverte hacia arriba, abajo, la izquierda o la derecha, siempre y cuando se esté dentro del tablero."},
+      { titulo: "Casillas", cuerpo: "Al pisar una casilla deberás afrontar el evento relacionada a esta."},
+      { titulo: "Objetos", cuerpo: "Cada jugador puede tener hasta 3 objetos. Estos pueden ser utilizados durante tu turno"},
+
+    ];
+
+
     return (
       <main>
          <div className= 'icono'>
@@ -69,8 +91,8 @@ export default function Rules() {
 
             <div className= 'tablarules'>
                <div className= 'Elementorules'>
-                  <h2>Objetivo</h2>
-                  <p>El objetivo es llegar al centro del tablero primero, para así obtener la corona. ​</p>
+                  <h2>{Regla[ReglaActual].titulo}</h2>
+                  <p>{Regla[ReglaActual].cuerpo}</p>
                </div>
             </div>
 
