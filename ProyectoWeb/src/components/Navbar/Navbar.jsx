@@ -20,16 +20,17 @@ function Navbar() {
                         Principal
                     </NavLink>    
                 </li>
-                <li className="navbar-element">
-                    <NavLink to="Reglas" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
-                        Reglas
-                    </NavLink>    
-                </li>
                 <li className="navbar-element"> 
                     <NavLink to="about-team" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
                         Team
                     </NavLink>
                 </li>
+                <li className="navbar-element">
+                    <NavLink to="Reglas" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                        Reglas
+                    </NavLink>    
+                </li>
+                
             </ul>
         </nav>
     </header>
