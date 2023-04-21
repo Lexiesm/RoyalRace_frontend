@@ -25,14 +25,16 @@ main {
     gap: 30px;
 }
 
-/* .content img{
+.content img{
     width: auto;
-    height: 100px;
-    margin-bottom: 1px;
-} */
+    height: 80px;
+    margin-bottom: -40px;
+}
 
-.name{
-    margin-top: 1px;
+
+.content .name{
+    margin-top: -10px;
+    background-color: #191414;
 }
 
 .content h3{

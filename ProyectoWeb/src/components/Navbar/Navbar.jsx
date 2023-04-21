@@ -6,7 +6,7 @@ function Navbar() {
     <header>
         <nav className="navbar">
             <NavLink to="/" className="logo-display">
-                <img src="src/assets/logo.jpg" alt="" className="logo-image" /> 
+                <img src="src/assets/imgs/Crown.jpg" alt="" className="logo-image" /> 
                 <span className="name title"> RoyalRace </span>
             </NavLink>
             <ul className="navbar-links-container">

@@ -8,7 +8,7 @@ export default function LandingPage() {
     <main className="content">
         <div className="bg-container"></div>
         <div className="content">
-            {/* <img src={icono} alt='crown'/> */}
+            <img src={icono} alt='crown'/>
             <h1><span className="name">Royal Race</span></h1>
             <h3>¿Preparadx para ser coronadx?</h3>
             <Link className="play-button" to="/">
