@@ -8,9 +8,7 @@ div {
     text-align: center;
     color: #191414;
   }
-img {
-  background-color: #191414;
-}
+
 
 .icono {
   margin: 3%;
@@ -52,9 +50,35 @@ img {
 .Elementorules h2{
   font-size: 35px;
   padding: 15px;
+  color: black;
 }
 
 .Elementorules p{
   font-size: 20px;
   padding: 25px;
+  color: black;
+}
+
+.Elementorules button{
+  padding: 10px 20px;
+  background: #91be1d;
+  transition: all 0.1s ease-in;
+  text-decoration: none;
+  border-radius: 7px;
+  color: black;
+  margin-left:30px;
+  margin-right: 30px;
+  margin-bottom: 15px;
+}
+
+.Elementorules button:hover {
+  background-color: black;
+  color: #91be1d;
+}
+
+.componente-variable{
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
