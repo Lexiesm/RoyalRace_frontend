@@ -1,0 +1,32 @@
+.main{
+    background: black;
+    display: block;
+}
+
+.display-block {
+display: block;
+}
+
+.display-none {
+display: none;
+}
+
+.basic-button {
+    padding: 10px 20px;
+    background: #91be1d;
+    transition: all 0.1s ease-in;
+    text-decoration: none;
+    border-radius: 7px;
+    color: black;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.basic-button:hover {
+    background-color: black;
+    color: #91be1d;
+}
+  
+  

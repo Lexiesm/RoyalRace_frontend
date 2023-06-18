@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import objeto1 from '../assets/icons/escudo.png';
-import objeto2 from '../assets/icons/espada.png';
-import objeto3 from '../assets/icons/muro.png';
-import casilla1 from '../assets/icons/aleatorio.png';
-import casilla2 from '../assets/icons/coin.png';
-import casilla3 from '../assets/icons/corazon.png';
-import casilla4 from '../assets/icons/craneo.png';
-import casilla5 from '../assets/icons/ladron.png';
-import casilla6 from '../assets/icons/tesoro.png';
+import objeto1 from '../../assets/icons/escudo.png';
+import objeto2 from '../../assets/icons/espada.png';
+import objeto3 from '../../assets/icons/muro.png';
+import casilla1 from '../../assets/icons/aleatorio.png';
+import casilla2 from '../../assets/icons/coin.png';
+import casilla3 from '../../assets/icons/corazon.png';
+import casilla4 from '../../assets/icons/craneo.png';
+import casilla5 from '../../assets/icons/ladron.png';
+import casilla6 from '../../assets/icons/tesoro.png';
 import './Rules.css';
 
 
