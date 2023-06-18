@@ -16,9 +16,9 @@ export default function Principal(){
             <Link className="play-button" to="">
                 Iniciar Partida
             </Link>
-            <Link className="play-button" to="">
+            <a className="play-button" href="/ver-perfil">
                 Ver Perfil
-            </Link>
+            </a>
             
         </div>
     </main>

@@ -6,6 +6,7 @@ import {
 import LandingPage from '../pages/LandingPage/LandingPage';
 import AboutTeam from '../pages/AboutTeam/AboutTeam';
 import Principal from '../pages/Principal/Principal';
+import VerPerfil from '../pages/VerPerfil/VerPerfil';
 import Layout from '../pages/Layout';
 import Rules from '../game/Rules';
 
@@ -29,6 +30,10 @@ function Router() {
         },
         { path: 'reglas',
           element: <Rules/>
+        }
+        ,
+        { path: 'ver-perfil',
+          element: <VerPerfil/>
         }
       ]
     },

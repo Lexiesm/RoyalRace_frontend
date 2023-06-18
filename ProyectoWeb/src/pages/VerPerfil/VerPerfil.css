@@ -1,0 +1,57 @@
+main {
+    width: 100%;
+    height: 87.5vh;
+    
+}
+.content-equipo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    text-align: justify;
+    gap: 30px;
+    flex-direction: row;
+}
+
+
+.ficha{
+    width: 300px;
+    height: 390px;
+    margin: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #91be1d;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+    cursor: default;
+    transition: all 400ms ease;
+    padding: 10px;
+
+}
+
+.ficha .contenido-ficha{
+    padding: 15px;
+    text-align: center;
+
+}
+
+.ficha .contenido-ficha h2{
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 3;
+    color: white;
+    font-size: 18px; 
+}
+
+.ficha .contenido-ficha p{
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.5;
+    color: black;
+    font-size: 18px; 
+}
+
+.ficha .contenido-ficha h1{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 300;
+    margin-bottom: 0px;
+    color: black;
+    font-size: 40px;
+}
