@@ -8,9 +8,9 @@
     z-index: 9999;
   }
 
-.modal-main {
+.modal-mainJ {
 position: fixed;
-background-color: white;
+background-color: black;
 width: 50%;
 height: auto;
 max-height: 80vh; /* Ajusta la altura máxima según tus necesidades */
@@ -23,9 +23,12 @@ overflow-y: auto; /* Habilita el desplazamiento vertical */
 }
 
 
-.modal-main h1,
-.modal-main p {
-    color: black; /* Letras en color negro */
+.modal-mainJ h1{
+    color: white;
+}
+
+.modal-mainJ p {
+    color: white;
 }
 
 .basic-button {
@@ -42,4 +45,20 @@ overflow-y: auto; /* Habilita el desplazamiento vertical */
 .basic-button:hover {
     background-color: black;
     color: #91be1d;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: black;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 5px;
+  }
+  
+.close-icon {
+font-size: 20px;
+color: red;
 }

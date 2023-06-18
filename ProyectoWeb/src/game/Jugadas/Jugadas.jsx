@@ -7,7 +7,7 @@ const PopUpJugadas = ({ handleClose, show }) => {
 
   return (
     <div className={showHideClassName}>
-      <section className="modal-main">
+      <section className="modal-mainJ">
         <h1>Jugadas</h1>
         <h1>Jugadas</h1>
         <h1>Jugadas</h1>
@@ -28,7 +28,9 @@ const PopUpJugadas = ({ handleClose, show }) => {
         <h1>Jugadas</h1>
         <h1>Jugadas</h1>
         <h1>Jugadas</h1>
-        <button className="basic-button" onClick={handleClose}>Cerrar</button>
+        <button className="close-button" onClick={handleClose}>
+            <span className="close-icon">&#10006;</span>
+        </button>
       </section>
     </div>
   );

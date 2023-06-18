@@ -1,6 +1,7 @@
 import React from 'react';
 import './Tienda.css';
-import Rules from '../Rules/Rules';
+import escudo from '../../assets/icons/escudo.png';
+import espada from '../../assets/icons/espada.png';
 
 // Cómo hacer un pop up básico obtenido de Chatgpt
 const PopUpTienda = ({ handleClose, show }) => {
@@ -9,8 +10,22 @@ const PopUpTienda = ({ handleClose, show }) => {
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
-        <Rules></Rules>
-        <button className="basic-button" onClick={handleClose}>Cerrar</button>
+        <h1>Tienda</h1>
+        <div className="item-row">
+        <div className="item-column">
+            <img src={espada} alt="Espada" />
+            <p>$50</p>
+            <button className='basic-button'>Comprar</button>
+        </div>
+        <div className="item-column">
+            <img src={escudo} alt="Escudo" />
+            <p>$50</p>
+            <button className='basic-button'>Comprar</button>
+        </div>
+        </div>
+        <button className="close-button" onClick={handleClose}>
+          <span className="close-icon">&#10006;</span>
+        </button>
       </section>
     </div>
   );
