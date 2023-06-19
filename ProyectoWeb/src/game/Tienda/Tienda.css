@@ -29,20 +29,23 @@ overflow: hidden; /* Deshabilita el desplazamiento */
     margin-bottom: 25px;
 }
 
-.basic-button {
-    padding: 10px 20px;
-    background: #91be1d;
-    transition: all 0.1s ease-in;
+.tienda-button {
+    font-family: 'Courier New', Courier, monospace;
     text-decoration: none;
-    border-radius: 7px;
-    color: black;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    display: inline-block;
+    padding: 10px;
+    margin-top: 10px;
+    bottom: 0; 
+    background: #91be1d;
+    color:#fff;
+    border: 1px solid #191414;
+    border-radius: 4px;
+    transition: all 400ms ease;
 }
 
-.basic-button:hover {
-    background-color: black;
-    color: #91be1d;
+.tienda-button:hover {
+    background: white;
+    color:#191414;
 }
 
 .close-button {
@@ -83,11 +86,5 @@ color: red;
 
 .item-column p {
     font-size: 30px;
-    margin-top: 10px;
-}
-
-.item-column button {
-    font-size: 16px;
-    padding: 10px 20px;
     margin-top: 10px;
 }

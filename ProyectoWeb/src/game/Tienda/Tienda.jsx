@@ -1,5 +1,6 @@
 import React from 'react';
 import './Tienda.css';
+import BotonTienda from './botonTienda';
 import escudo from '../../assets/icons/escudo.png';
 import espada from '../../assets/icons/espada.png';
 
@@ -15,12 +16,12 @@ const PopUpTienda = ({ handleClose, show }) => {
         <div className="item-column">
             <img src={espada} alt="Espada" />
             <p>$50</p>
-            <button className='basic-button'>Comprar</button>
+            <BotonTienda id_player={2} tipo_objeto="espada" />
         </div>
         <div className="item-column">
             <img src={escudo} alt="Escudo" />
-            <p>$50</p>
-            <button className='basic-button'>Comprar</button>
+            <p>$70</p>
+            <BotonTienda id_player={2} tipo_objeto="escudo" />
         </div>
         </div>
         <button className="close-button" onClick={handleClose}>

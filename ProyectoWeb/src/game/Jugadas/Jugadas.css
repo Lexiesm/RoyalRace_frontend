@@ -27,6 +27,10 @@ overflow-y: auto; /* Habilita el desplazamiento vertical */
     color: white;
 }
 
+li{
+    margin-right: 5px;
+}
+
 .modal-mainJ p {
     color: white;
 }
