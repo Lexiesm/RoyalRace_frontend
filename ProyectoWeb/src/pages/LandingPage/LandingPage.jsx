@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import icono from '../../assets/imgs/Crown.jpg';
 import './landing.css';
 
+
 export default function LandingPage() {
   return (
     <main className="content">
@@ -11,14 +12,21 @@ export default function LandingPage() {
             <img src={icono} alt='crown'/>
             <h1><span className="name">Royal Race</span></h1>
             <h3>¿Preparadx para ser coronadx?</h3>
-            <Link className="play-button" to="/">
+            <Link className="play-button" to="/login">
                 Iniciar sesión
             </Link>
-            <Link className="play-button" to="/">
+            <Link className="play-button" to="/signup">
                 Registrarse
+            </Link>
+            <Link className="play-button" to="/usercheck">
+                Verificar scope
+            </Link>
+            <Link className="play-button" to="/admincheck">
+                Verificar admin
             </Link>
             
         </div>
     </main>
   )
 }
+

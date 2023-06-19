@@ -1,0 +1,36 @@
+.Login {
+    width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1) ;
+    background-color: #91be1d;
+}
+
+.Login p{
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.Login form label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.Login form input {
+    color: black;
+}
+
+.Login form input[type="text"],
+.Login form input [type="correo"],
+.Login form input [type="clave"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px; 
+    border: 1px solid #ddd; 
+    border-radius: 3px;
+    color: black;
+}
