@@ -9,7 +9,13 @@ import Principal from '../pages/Principal/Principal';
 import VerPerfil from '../pages/VerPerfil/VerPerfil';
 import Layout from '../pages/Layout';
 import Rules from '../game/Rules/Rules';
+import Login from '../profile/Login';
+import UserCheck from '../protected/UserCheck';
+import AdminCheck from '../protected/AdminCheck';
+import Signup from '../profile/Sign_up';
+import LogoutButton from '../profile/Logout';
 import VistaJuego from '../game/VistaJuego/VistaJuego';
+
 
 function Router() {
   const router = createBrowserRouter([
@@ -31,12 +37,32 @@ function Router() {
         },
         { path: 'reglas',
           element: <Rules/>
-        },
+        }, 
         { path: 'ver-perfil',
           element: <VerPerfil/>
         }
       ]
     },{
+      path: '/login',
+      element: <Login/>
+    },
+    {
+      path: '/usercheck',
+      element: <UserCheck/>
+    },
+    {
+      path: '/admincheck',
+      element: <AdminCheck/>
+    },
+    {
+      path: '/signup',
+      element: <Signup/>
+    },
+    {
+      path: '/logout',
+      element: <LogoutButton/>
+    },
+   {
       path: '/game/',
       element: <VistaJuego/>
     },{

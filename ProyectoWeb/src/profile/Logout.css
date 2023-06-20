@@ -1,0 +1,12 @@
+div {
+    color: white;
+}
+
+button {
+    padding: 10px 20px;
+    background: red;
+    transition: all 0.1s ease-in;
+    text-decoration: none;
+    border-radius: 7px;
+    color: black;
+}

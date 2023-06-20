@@ -30,6 +30,11 @@ function Navbar() {
                         Reglas
                     </NavLink>    
                 </li>
+                <li className="navbar-element">
+                    <NavLink to="/game" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                        Juego
+                    </NavLink>    
+                </li>
                 
             </ul>
         </nav>

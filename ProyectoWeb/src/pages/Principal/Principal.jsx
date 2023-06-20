@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './principal.css'
+import LogoutButton from "../../profile/Logout";
 
 export default function Principal(){
     return (
@@ -21,6 +22,7 @@ export default function Principal(){
             </a>
             
         </div>
+        <LogoutButton></LogoutButton>
     </main>
     )
 }
