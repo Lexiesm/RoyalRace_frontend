@@ -8,7 +8,7 @@
     z-index: 9999;
   }
 
-.modal-main {
+.modal-mainJ {
 position: fixed;
 background-color: black;
 width: 50%;
@@ -23,9 +23,16 @@ overflow-y: auto; /* Habilita el desplazamiento vertical */
 }
 
 
-.modal-main h1,
-.modal-main p {
-    color: black; /* Letras en color negro */
+.modal-mainJ h1{
+    color: white;
+}
+
+li{
+    margin-right: 5px;
+}
+
+.modal-mainJ p {
+    color: white;
 }
 
 .basic-button {
@@ -55,7 +62,7 @@ overflow-y: auto; /* Habilita el desplazamiento vertical */
     padding: 5px;
   }
   
-  .close-icon {
-    font-size: 20px;
-    color: red;
-  }
+.close-icon {
+font-size: 20px;
+color: red;
+}

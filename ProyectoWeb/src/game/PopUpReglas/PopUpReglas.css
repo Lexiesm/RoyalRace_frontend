@@ -1,0 +1,61 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+
+.modal-main {
+position: fixed;
+background-color: black;
+width: 50%;
+height: auto;
+max-height: 80vh; /* Ajusta la altura máxima según tus necesidades */
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 20px;
+border-radius: 5px; /* Puntas levemente redondeadas */
+overflow: hidden; /* Deshabilita el desplazamiento */
+}
+
+
+.modal-main h1,
+.modal-main p {
+    color: black; /* Letras en color negro */
+}
+
+.basic-button {
+    padding: 10px 20px;
+    background: #91be1d;
+    transition: all 0.1s ease-in;
+    text-decoration: none;
+    border-radius: 7px;
+    color: black;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.basic-button:hover {
+    background-color: black;
+    color: #91be1d;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: black;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 5px;
+  }
+  
+  .close-icon {
+    font-size: 20px;
+    color: red;
+  }

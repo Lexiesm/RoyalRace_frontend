@@ -11,22 +11,22 @@ function Navbar() {
             </NavLink>
             <ul className="navbar-links-container">
                 <li className="navbar-element">
-                    <NavLink to="/" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                    <NavLink to="/inicio/" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
                         Home
                     </NavLink>
                 </li>
                 <li className="navbar-element">
-                    <NavLink to="/principal" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                    <NavLink to="/inicio/principal" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
                         Principal
                     </NavLink>    
                 </li>
                 <li className="navbar-element"> 
-                    <NavLink to="/about-team" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                    <NavLink to="/inicio/about-team" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
                         Team
                     </NavLink>
                 </li>
                 <li className="navbar-element">
-                    <NavLink to="/Reglas" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                    <NavLink to="/inicio/Reglas" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
                         Reglas
                     </NavLink>    
                 </li>

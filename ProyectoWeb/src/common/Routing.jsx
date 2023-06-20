@@ -6,20 +6,21 @@ import {
 import LandingPage from '../pages/LandingPage/LandingPage';
 import AboutTeam from '../pages/AboutTeam/AboutTeam';
 import Principal from '../pages/Principal/Principal';
-// import VerPerfil from '../pages/VerPerfil/VerPerfil';
+import VerPerfil from '../pages/VerPerfil/VerPerfil';
 import Layout from '../pages/Layout';
 import Rules from '../game/Rules/Rules';
-// import VistaJuego from '../game/VistaJuego/VistaJuego';
 import Login from '../profile/Login';
 import UserCheck from '../protected/UserCheck';
 import AdminCheck from '../protected/AdminCheck';
 import Signup from '../profile/Sign_up';
 import LogoutButton from '../profile/Logout';
+import VistaJuego from '../game/VistaJuego/VistaJuego';
+
 
 function Router() {
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: '/inicio/',
       element: <Layout />,
       children: [
         {
@@ -36,17 +37,12 @@ function Router() {
         },
         { path: 'reglas',
           element: <Rules/>
-        },
-        // { path: 'ver-perfil',
-        //   element: <VerPerfil/>
-        // }
+        }, 
+        { path: 'ver-perfil',
+          element: <VerPerfil/>
+        }
       ]
-    },
-    // {
-    //   path: '/game',
-    //   element: <VistaJuego/>
-    // },
-    {
+    },{
       path: '/login',
       element: <Login/>
     },
@@ -66,7 +62,10 @@ function Router() {
       path: '/logout',
       element: <LogoutButton/>
     },
-    {
+   {
+      path: '/game/',
+      element: <VistaJuego/>
+    },{
       path: '*', 
       loader: () => {
         return redirect('/')

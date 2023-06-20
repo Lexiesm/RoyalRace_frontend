@@ -1,101 +1,17 @@
-import React, { version } from 'react';
+import React from 'react';
 import './Tablero.css';
 import BoxButton from './Casilla';
-import objeto1 from '../../assets/icons/escudo.png';
-import objeto2 from '../../assets/icons/espada.png';
-import objeto3 from '../../assets/icons/muro.png';
-import casilla1 from '../../assets/icons/aleatorio.png';
-import casilla2 from '../../assets/icons/coin.png';
-import casilla3 from '../../assets/icons/corazon.png';
-import casilla4 from '../../assets/icons/craneo.png';
-import casilla5 from '../../assets/icons/ladron.png';
-import casilla6 from '../../assets/icons/tesoro.png';
-import corona from '../../assets/icons/corona.png';
 
-export default function Tablero(){
-    return (
-        <main className="tablero-grid">
-            <BoxButton image= {casilla2} />
-            <BoxButton image= {objeto2} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla1} />   
-            <BoxButton image= {casilla2} />
-            <BoxButton image= {casilla2} />
-            <BoxButton image= {casilla2} />  
-            <BoxButton image= {casilla1} />
-            <BoxButton image= {casilla2} />
-            <BoxButton image= {casilla2} />
-            <BoxButton image= {objeto1} />   
-            <BoxButton image= {casilla1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />  
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla1} />   
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla2} />  
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />   
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla1} /> 
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />   
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />  
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />   
-            <BoxButton image= {objeto1} />
-            <BoxButton image={corona} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />   
-            <BoxButton image= {casilla2} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />  
-            <BoxButton image= {casilla2} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla1} />   
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />  
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla1} />
-            <BoxButton image= {objeto1} />   
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla2} />
-            <BoxButton image= {objeto1} />  
-            <BoxButton image= {casilla2} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla1} />   
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla2} /> 
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla1} />
-            <BoxButton image= {casilla2} />   
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />  
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {objeto1} />
-            <BoxButton image= {casilla2} />
-            <BoxButton image= {objeto1} />   
-            <BoxButton image= {objeto1} />  
-        </main> 
-    )
-}
+export default function Tablero() {
+    const rows = 9; // Número de filas
+    const cols = 9; // Número de columnas
+    const buttons = [];
+  
+    for (let i = 1; i <= rows; i++) {
+      for (let j = 1; j <= cols; j++) {
+        buttons.push(<BoxButton key={`${i}-${j}`} x={i} y={j} />);
+      }
+    }
+  
+    return <main className="tablero-grid">{buttons}</main>;
+  }
