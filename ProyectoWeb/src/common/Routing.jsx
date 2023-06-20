@@ -9,7 +9,7 @@ import Principal from '../pages/Principal/Principal';
 // import VerPerfil from '../pages/VerPerfil/VerPerfil';
 import Layout from '../pages/Layout';
 import Rules from '../game/Rules/Rules';
-import VistaJuego from '../game/VistaJuego/VistaJuego';
+// import VistaJuego from '../game/VistaJuego/VistaJuego';
 import Login from '../profile/Login';
 import UserCheck from '../protected/UserCheck';
 import AdminCheck from '../protected/AdminCheck';
@@ -42,10 +42,10 @@ function Router() {
         // }
       ]
     },
-    {
-      path: '/game',
-      element: <VistaJuego/>
-    },
+    // {
+    //   path: '/game',
+    //   element: <VistaJuego/>
+    // },
     {
       path: '/login',
       element: <Login/>
