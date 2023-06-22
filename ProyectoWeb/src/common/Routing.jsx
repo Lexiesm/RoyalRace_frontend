@@ -24,7 +24,7 @@ function Router() {
       element: <Layout />,
       children: [
         {
-          path: '',
+          path: '/inicio/',
           element: <LandingPage />
         },
         {
@@ -62,7 +62,7 @@ function Router() {
       path: '/logout',
       element: <LogoutButton/>
     },
-   {
+    {
       path: '/game/',
       element: <VistaJuego/>
     },{

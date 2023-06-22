@@ -37,12 +37,12 @@ export default function Rules() {
          break;
        case 2:
          objeto = <img src={objeto2} alt="Espada" />;
-         descrip_obj = "Le puedes quitar un turno a un rival";
+         descrip_obj = "Le quitas un corazón de vida al rival";
          break;
-       case 3:
-         objeto = <img src={objeto3} alt="Muro" />;
-         descrip_obj = "Puedes bloquear una casilla al deslizarla sobre esta";
-         break;
+      //  case 3:
+      //    objeto = <img src={objeto3} alt="Muro" />;
+      //    descrip_obj = "Puedes bloquear una casilla al deslizarla sobre esta";
+      //    break;
        default:
         objeto = null;
         descrip_obj = null;
@@ -73,11 +73,11 @@ export default function Rules() {
         break;
        case 3:
         casilla = <img src={casilla3} alt="Corazón" />;
-        descrip_cas = "Ganas dinero para regalarlo a otro jugador";
+        descrip_cas = "Ganas una vida";
         break;
        case 4:
         casilla = <img src={casilla4} alt="Calavera" />;
-        descrip_cas = "Pierdes el siguiente turno";
+        descrip_cas = "Pierdes una vida";
         break;
        case 5:
         casilla = <img src={casilla5} alt="Ladrón" />;
