@@ -15,16 +15,17 @@ import AdminCheck from '../protected/AdminCheck';
 import Signup from '../profile/Sign_up';
 import LogoutButton from '../profile/Logout';
 import VistaJuego from '../game/VistaJuego/VistaJuego';
+import Sala from '../pages/Sala/Sala';
 
 
 function Router() {
   const router = createBrowserRouter([
     {
-      path: '/inicio/',
+      path: '/',
       element: <Layout />,
       children: [
         {
-          path: '/inicio/',
+          path: '/',
           element: <LandingPage />
         },
         {
@@ -40,6 +41,9 @@ function Router() {
         }, 
         { path: 'ver-perfil',
           element: <VerPerfil/>
+        },
+        { path: '/principal/sala',
+          element: <Sala/>
         }
       ]
     },{

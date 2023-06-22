@@ -10,7 +10,7 @@ main {
     font-size: 1.5vw;
     text-align: justify;
     gap: 30px;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 
@@ -54,4 +54,32 @@ main {
     margin-bottom: 0px;
     color: black;
     font-size: 40px;
+}
+.play-button {
+    padding: 10px 20px;
+    background: #91be1d;
+    transition: all 0.1s ease-in;
+    text-decoration: none;
+    border-radius: 7px;
+    color: black;
+}
+
+.play-button:hover {
+    background-color: black;
+    color: #91be1d;
+}
+
+.back-button {
+    padding: 5px 10px;
+    font-size: 15px;
+    background: black;
+    transition: all 0.1s ease-in;
+    text-decoration: none;
+    border-radius: 7px;
+    color: #91be1d;
+}
+
+.back-button:hover {
+    background-color: #91be1d;
+    color: black;
 }

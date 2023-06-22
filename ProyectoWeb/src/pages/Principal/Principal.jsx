@@ -14,7 +14,7 @@ export default function Principal(){
                 al centro del tablero antes que tus rivales para 
                 ser coronadx 
             </h3>
-            <Link className="play-button" to="">
+            <Link className="play-button" to="/principal/sala">
                 Iniciar Partida
             </Link>
             <a className="play-button" href="/ver-perfil">

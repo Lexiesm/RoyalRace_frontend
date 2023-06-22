@@ -13,5 +13,7 @@ export default function Tablero() {
       }
     }
   
-    return <main className="tablero-grid">{buttons}</main>;
+    return <main className="tablero-grid">
+              {buttons}
+            </main>;
   }
