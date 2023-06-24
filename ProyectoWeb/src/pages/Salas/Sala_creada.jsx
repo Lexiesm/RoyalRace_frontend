@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import './Sala.css'
+import './Crear_sala.css'
 
 
-export default function Sala(){
+export default function Sala_creada(){
     return (
         <main className="content">
             <div className="bg-container"></div>

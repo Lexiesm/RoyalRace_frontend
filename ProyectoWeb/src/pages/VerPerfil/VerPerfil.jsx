@@ -41,6 +41,7 @@ export default function VerPerfil() {
           <p>{partidasGanadas}</p>
           <h2>Partidas Totales:</h2>
           <p>{partidasTotales}</p>
+
         </div>
       </div>
 

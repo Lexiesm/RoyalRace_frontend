@@ -5,7 +5,7 @@ import foto_alex from '../../assets/imgs/Alex.jpg';
 
 export default function AboutTeam(){
     return (
-        <main className="content-equipo">
+        <main className="content_equipo">
                 <div className="ficha">
                     <div className="contenido-ficha">
                         <figure>

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from '../../auth/AuthContext';
 
 function Navbar() {
+    const {token, setToken} = useContext(AuthContext);
   return (
     <header>
         <nav className="navbar">
@@ -15,11 +17,6 @@ function Navbar() {
                         Home
                     </NavLink>
                 </li>
-                <li className="navbar-element">
-                    <NavLink to="/principal" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
-                        Principal
-                    </NavLink>    
-                </li>
                 <li className="navbar-element"> 
                     <NavLink to="/about-team" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
                         Team
@@ -30,12 +27,22 @@ function Navbar() {
                         Reglas
                     </NavLink>    
                 </li>
-                <li className="navbar-element">
-                    <NavLink to="/game" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
-                        Juego
-                    </NavLink>    
-                </li>
+
                 
+        {token !== null ? (
+          <>
+            <li className="navbar-element">
+              <NavLink
+                to="/principal"
+                className={({ isActive }) => (isActive ? "navbar-link name" : "navbar-link")}
+              >
+                Principal
+              </NavLink>
+            </li>
+          </>
+        ) : null}
+                
+
             </ul>
         </nav>
     </header>

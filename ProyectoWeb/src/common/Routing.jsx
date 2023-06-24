@@ -15,7 +15,9 @@ import AdminCheck from '../protected/AdminCheck';
 import Signup from '../profile/Sign_up';
 import LogoutButton from '../profile/Logout';
 import VistaJuego from '../game/VistaJuego/VistaJuego';
-import Sala from '../pages/Sala/Sala';
+import Sala_creada from '../pages/Salas/Sala_creada';
+import Crear_sala from '../pages/Salas/Crear_sala';
+import Sala from '../pages/Salas/Sala';
 
 
 function Router() {
@@ -44,6 +46,13 @@ function Router() {
         },
         { path: '/principal/sala',
           element: <Sala/>
+        },
+        { path: '/principal/sala/sala_creada',
+          element: <Sala_creada/>
+        }
+        ,
+        { path: '/principal/sala/crear_sala',
+          element: <Crear_sala/>
         }
       ]
     },{

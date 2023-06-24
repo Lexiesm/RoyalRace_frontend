@@ -4,6 +4,7 @@ import './principal.css'
 import LogoutButton from "../../profile/Logout";
 
 export default function Principal(){
+
     return (
         <main className="principal-content">
         <div className="bg-container"></div>
@@ -22,7 +23,8 @@ export default function Principal(){
             </a>
             
         </div>
-        <LogoutButton></LogoutButton>
-    </main>
+           <LogoutButton />
+
+        </main>
     )
 }
