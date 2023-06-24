@@ -16,12 +16,12 @@ const PopUpTienda = ({ handleClose, show }) => {
         <div className="item-column">
             <img src={espada} alt="Espada" />
             <p>$50</p>
-            <BotonTienda id_player={2} tipo_objeto="espada" />
+            <BotonTienda id_player={1} tipo_objeto="espada" />
         </div>
         <div className="item-column">
             <img src={escudo} alt="Escudo" />
             <p>$70</p>
-            <BotonTienda id_player={2} tipo_objeto="escudo" />
+            <BotonTienda id_player={1} tipo_objeto="escudo" />
         </div>
         </div>
         <button className="close-button" onClick={handleClose}>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Jugadas.css';
 import axios from 'axios';
 
+
 const PopUpJugadas = ({ handleClose, show }) => {
   const [jugadas, setJugadas] = useState([]);
 

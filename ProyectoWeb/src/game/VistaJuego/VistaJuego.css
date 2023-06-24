@@ -28,5 +28,10 @@ display: none;
     background-color: black;
     color: #91be1d;
 }
+
+.contenedor-horizontal{
+    display: flex;
+    margin-right: 50px;
+}
   
   

@@ -3,6 +3,7 @@ import PopUpJugadas from '../Jugadas/Jugadas';
 import PopUpReglas from '../PopUpReglas/PopUpReglas';
 import PopUpTienda from '../Tienda/Tienda';
 import Tablero from '../Tablero/Tablero';
+import Objetos from '../objetos/objetos';
 
 import './VistaJuego.css';
 
@@ -36,8 +37,9 @@ const VistaJuego = () => {
       <PopUpTienda show={showPopupTienda} handleClose={togglePopupTienda}>
       </PopUpTienda>
     </div>
-    <div>
+    <div className='contenedor-horizontal'>
       <Tablero/>
+      <Objetos/>
     </div>
     </main>
   );
