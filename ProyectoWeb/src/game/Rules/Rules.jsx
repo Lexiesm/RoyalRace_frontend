@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import objeto1 from '../../assets/icons/escudo.png';
 import objeto2 from '../../assets/icons/espada.png';
-import objeto3 from '../../assets/icons/muro.png';
 import casilla1 from '../../assets/icons/aleatorio.png';
 import casilla2 from '../../assets/icons/coin.png';
 import casilla3 from '../../assets/icons/corazon.png';
@@ -21,7 +20,7 @@ export default function Rules() {
     useEffect(() => {
        const intervalo1 = setInterval(() => {
          // Cambiar el ícono actual por el siguiente
-         setObjetoActual(objetoActual => (objetoActual === 3 ? 1 : objetoActual + 1));
+         setObjetoActual(objetoActual => (objetoActual === 2 ? 1 : objetoActual + 1));
        }, 4000);
    
        // Limpiar el intervalo al desmontar el componente
@@ -81,7 +80,7 @@ export default function Rules() {
         break;
        case 5:
         casilla = <img src={casilla5} alt="Ladrón" />;
-        descrip_cas = "Le puedes robar el dinero a un jugador";
+        descrip_cas = "Te roba todo tu dinero";
         break;
        case 6:
         casilla = <img src={casilla6} alt="Tesoro" />;

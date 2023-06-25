@@ -2,18 +2,31 @@ import React, { useState, useEffect } from 'react';
 import './Jugadas.css';
 import axios from 'axios';
 
+
 const PopUpJugadas = ({ handleClose, show }) => {
   const [jugadas, setJugadas] = useState([]);
 
+  
+  //  ACTUALIZAR RUTA SEGUN ID GAME !
   useEffect(() => {
-    axios.get('http://localhost:8000/plays/1')
-      .then(function (response) {
-        setJugadas(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+    const updateJugadas = () => {
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/plays/1`)
+          .then(function (response) {
+            setJugadas(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    };
+
+    updateJugadas();
+    const interval = setInterval(updateJugadas, 15000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);   
+
 
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
 

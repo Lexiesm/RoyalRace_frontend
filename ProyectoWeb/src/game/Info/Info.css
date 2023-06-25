@@ -1,0 +1,78 @@
+/* ------------------ Para Turno Actual ---------------- */ 
+
+.main-turno-actual{
+    display: flex;
+    border-radius: 5px;
+    padding: 20px;
+    width: 200px; 
+    height: 60px;
+    align-items: center;
+}
+.main-turno-actual img{
+    width: 50px; 
+    height: 50px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+}
+
+.main-turno-actual h1{
+    margin-bottom: 5px;
+}
+
+/* ------------------ Para Dinero ---------------- */ 
+
+.main-dinero{
+    display: flex;
+    padding: 20px;
+    width: 150px; 
+    height: 60px;
+    align-items: center;
+}
+.main-dinero img{
+    width: 50px; 
+    height: 50px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.main-dinero h1{
+    margin-bottom: 5px;
+    margin-right: 15px;
+}
+
+/* ------------------ Para Vidas ---------------- */ 
+
+.main-vidas{
+    display: flex;
+    padding: 20px;
+    width: 300px; 
+    height: 60px;
+    align-items: center;
+    justify-content: flex-end; /* Alinea los elementos al extremo derecho del contenedor */
+    margin-left: auto; /* Empuja los elementos hacia el borde derecho de la pantalla */
+}
+.main-vidas img{
+    width: 50px; 
+    height: 50px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+/* ------------------ Para Color ---------------- */ 
+
+.main-color{
+    display: flex;
+    padding: 20px;
+    width: 100px; 
+    height: 60px;
+    align-items: center;
+}
+.main-color img{
+    width: 50px; 
+    height: 50px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
