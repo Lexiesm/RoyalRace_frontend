@@ -3,8 +3,10 @@
     border: 1px solid white;
     border-radius: 5px;
     padding: 20px;
-    width: 250px; 
+    width: 200px; 
     height: 400px;
+    margin-top: 30px;
+    margin-left: 80px;
 }
 
 .main-oj h1 {
@@ -18,8 +20,10 @@ color: white;
 }
 
 .main-oj img{
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     cursor: pointer;
+    width: 100px; 
+    height: 100px;
 }
 
 .img-player{

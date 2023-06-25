@@ -4,6 +4,10 @@ import PopUpReglas from '../PopUpReglas/PopUpReglas';
 import PopUpTienda from '../Tienda/Tienda';
 import Tablero from '../Tablero/Tablero';
 import Objetos from '../objetos/objetos';
+import TurnoActual from '../Info/TurnoActual';
+import Dinero from '../Info/Dinero';
+import Vidas from '../Info/Vidas';
+import ColorJugador from '../Info/Color';
 
 import './VistaJuego.css';
 
@@ -24,23 +28,33 @@ const VistaJuego = () => {
 
   return (
     <main>
-    <div>
-      <button className="basic-button" onClick={togglePopupJugadas}>Ver Jugadas</button>
-      <PopUpJugadas show={showPopupJugadas} handleClose={togglePopupJugadas}>
-      </PopUpJugadas>
+      <div className='contenedor-informacion'>
+        <TurnoActual/>
+        <Vidas/>
+        <Dinero/>
+        <ColorJugador/>
 
-      <button className="basic-button" onClick={togglePopupReglas}>Reglas</button>
-      <PopUpReglas show={showPopupReglas} handleClose={togglePopupReglas}>
-      </PopUpReglas>
+      </div>
 
-      <button className="basic-button" onClick={togglePopupTienda}>Tienda</button>
-      <PopUpTienda show={showPopupTienda} handleClose={togglePopupTienda}>
-      </PopUpTienda>
-    </div>
-    <div className='contenedor-horizontal'>
-      <Tablero/>
-      <Objetos/>
-    </div>
+      <div className='contenedor-horizontal'>
+        <Tablero/>
+        <div className='contenedor-vertical'>
+          <Objetos/>
+          <div className='contenedor-botones'>
+            <button className="basic-button" onClick={togglePopupJugadas}>Ver Jugadas</button>
+            <PopUpJugadas show={showPopupJugadas} handleClose={togglePopupJugadas}>
+            </PopUpJugadas>
+
+            <button className="basic-button" onClick={togglePopupReglas}>Reglas</button>
+            <PopUpReglas show={showPopupReglas} handleClose={togglePopupReglas}>
+            </PopUpReglas>
+
+            <button className="basic-button" onClick={togglePopupTienda}>Tienda</button>
+            <PopUpTienda show={showPopupTienda} handleClose={togglePopupTienda}>
+            </PopUpTienda>
+          </div>
+        </div>
+      </div>
     </main>
   );
 };

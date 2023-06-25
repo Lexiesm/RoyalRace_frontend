@@ -10,33 +10,6 @@ const PopUpSelecVictim = ({ handleClose, show, selectedId }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
   const [players, setPlayers] = useState([]);
 
-  /*
-  useEffect(() => {
-    const updateObjects = () => {
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/1/1`)
-          .then(function (response) {
-            setPlayers(response.data);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    };
-
-    // Actualiza los objetos inicialmente
-    updateObjects();
-
-    // Actualiza los objetos cada 5 segundos
-    const interval = setInterval(updateObjects, 5000);
-
-    // Limpia el intervalo cuando el componente se desmonta
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);   
-  */
-
-
-
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/1/1`)
       .then(function (response) {
@@ -64,7 +37,7 @@ const PopUpSelecVictim = ({ handleClose, show, selectedId }) => {
   
   // Pendiente cambiar id_game y id_atacante 
   const handleClick = (selectedId, playerId) => {
-    console.log(`objeto ${selectedId}  y player ${playerId}`);
+
     axios.post(`${import.meta.env.VITE_BACKEND_URL}/atacar`, {
         id_game: 1,
         id_objeto: selectedId,
@@ -73,6 +46,7 @@ const PopUpSelecVictim = ({ handleClose, show, selectedId }) => {
    })
     .then(function (response) {
         console.log(response.data);
+        axios.patch(`${import.meta.env.VITE_BACKEND_URL}/games/cambiarTurno/1`);
         handleClose(); // Hace que se cierre el Pop Up
     })
     .catch(function (error) {

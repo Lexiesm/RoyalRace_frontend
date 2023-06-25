@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './Tienda.css';
 import axios from 'axios';
 
-export default function BotonTienda({ id_player, tipo_objeto }) {
+export default function BotonTienda({ id_player, tipo_objeto, handleClose }) {
     const [data, setData] = useState(null);
 
     const handleClick = () => {
@@ -13,6 +13,7 @@ export default function BotonTienda({ id_player, tipo_objeto }) {
         .then(function (response) {
             console.log(response.data);
             setData(response.data);
+            handleClose();
         })
         .catch(function (error) {
             console.log(error);

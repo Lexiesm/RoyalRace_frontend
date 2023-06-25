@@ -22,6 +22,7 @@ display: none;
     margin-top: 15px;
     margin-left: 15px;
     margin-right: 15px;
+    cursor: pointer;
 }
 
 .basic-button:hover {
@@ -29,9 +30,35 @@ display: none;
     color: #91be1d;
 }
 
+
 .contenedor-horizontal{
     display: flex;
     margin-right: 50px;
 }
   
+.contenedor-vertical {
+    display: flex;
+    flex-direction: column; /* Establece la dirección de los elementos como columna */
+    justify-content: flex-end; /* Alinea los elementos al extremo derecho del contenedor */
+    margin-left: auto; /* Empuja los elementos hacia el borde derecho de la pantalla */
+    margin-bottom: 30px;
+}
+
+.contenedor-botones{
+    display: flex;
+    flex-direction: row;
+    margin-right: 50px;
+}
+  
+
+.contenedor-informacion {
+    background-color: black;
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos al extremo derecho del contenedor */
+    margin-left: auto; /* Empuja los elementos hacia el borde derecho de la pantalla */
+}
+
+.contenedor-informacion > *:first-child {
+    margin-right: auto; /* Empuja el primer elemento hacia el borde izquierdo */
+}
   

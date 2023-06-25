@@ -11,18 +11,6 @@ const Objetos = () => {
   const [selectedId, setSelectedId] = useState(null);
 
 
-  /*
-  useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_URL}/objects/1`)
-      .then(function (response) {
-        setObjetos(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
-  */
-
   // Actualizar 1 -> ID GAME !! 
   useEffect(() => {
       const updateObjects = () => {
