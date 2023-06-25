@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import './Login.css';
 import axios from 'axios'; 
 import { AuthContext } from '../auth/AuthContext';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
@@ -17,7 +17,7 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        console.log("Apretaste el form");
+        console.log("Apretaste el form");   
         // vamos a enviar un post a la ruta login
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`,
         {
@@ -25,7 +25,6 @@ function Login() {
             clave
         }).then((response) => {
             // uno entra y no hay error
-            console.log("bloque then");
             
             setError(false);
             setMsg("Logueaste correctamente"); 
@@ -33,9 +32,9 @@ function Login() {
             const access_token = response.data.access_token
             setToken(access_token);
 
-
-            console.log(response);
-            navigate('/principal');
+            setTimeout(() => {
+                navigate('/principal');
+              }, 1500);
         }).catch((error) => {
             setMsg("Contraseña o correo incorrecto"); 
             console.log(error)

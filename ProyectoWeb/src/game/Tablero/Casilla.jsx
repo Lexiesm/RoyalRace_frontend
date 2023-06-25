@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import usuarioRojo from '../../assets/icons/usuario_rojo.png';
+import usuarioAmarillo from '../../assets/icons/usuario_amarrillo.png';
+import usuarioVerde from '../../assets/icons/usuario_verde.png';
+import usuarioAzul from '../../assets/icons/usuario_azul.png';
 import aleatorio from '../../assets/icons/aleatorio.png';
 import coin from '../../assets/icons/coin.png';
 import corazon from '../../assets/icons/corazon.png';
@@ -22,10 +26,7 @@ export default function BoxButton({ x, y }) {
     corona
   };
 
-  // CAMBIAR LO DE JUEGO 1 !!
-
   useEffect(() => {
-    // Función para obtener y actualizar el tablero
     const updateBoard = () => {
       axios.get(`${import.meta.env.VITE_BACKEND_URL}/boxes/1/${x}/${y}`)
         .then((response) => {
@@ -37,22 +38,33 @@ export default function BoxButton({ x, y }) {
         });
     };
 
-    // Actualiza el tablero inicialmente
     updateBoard();
 
-    // Actualiza el tablero cada 5 segundos
     const interval = setInterval(updateBoard, 5000);
 
-    // Limpia el intervalo cuando el componente se desmonta
     return () => {
       clearInterval(interval);
     };
-  }, [x, y]); 
-  
+  }, [x, y]);
+
   useEffect(() => {
-    // Actualiza la URL de la imagen cuando cambia la clave
-    setBackgroundImageUrl(images[imageKey]);
-  }, [imageKey, images]);
+    let imageUrl = images[imageKey];
+
+    // Asignar los iconos de los jugadores a las casillas correspondientes
+    if ((x === 1 && y === 1) || (x === 1 && y === 9) || (x === 9 && y === 1) || (x === 9 && y === 9)) {
+      if (x === 1 && y === 1) {
+        imageUrl = usuarioRojo;
+      } else if (x === 1 && y === 9) {
+        imageUrl = usuarioAmarillo;
+      } else if (x === 9 && y === 1) {
+        imageUrl = usuarioVerde;
+      } else if (x === 9 && y === 9) {
+        imageUrl = usuarioAzul;
+      }
+    }
+
+    setBackgroundImageUrl(imageUrl);
+  }, [imageKey, images, x, y]);
 
   const backgroundImageStyle = {
     backgroundImage: `url(${backgroundImageUrl})`,
@@ -62,7 +74,5 @@ export default function BoxButton({ x, y }) {
     backgroundColor: 'black',
   };
 
-  return (
-    <button className="box-button" style={backgroundImageStyle}></button>
-  );
-  }
+  return <button className="box-button" style={backgroundImageStyle}></button>;
+}

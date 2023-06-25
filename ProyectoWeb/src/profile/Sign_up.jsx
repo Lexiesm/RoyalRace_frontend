@@ -39,7 +39,9 @@ function Signup() {
 
 
             console.log(response);      
-            navigate('/principal');    
+            setTimeout(() => {
+                navigate('/principal');
+              }, 1500);   
         }).catch((error) => {
             setMsg("Correo ya esta registrado, intente con otro"); 
             console.log(error)
