@@ -1,13 +1,13 @@
 import React from "react";
-import './aboutteam.css';
+import './About-team.css';
 import foto_ignacia from '../../assets/imgs/Ignacia.jpg';
 import foto_alex from '../../assets/imgs/Alex.jpg';
 
 export default function AboutTeam(){
     return (
-        <main className="content-equipo">
-                <div class="ficha">
-                    <div class="contenido-ficha">
+        <main className="content_equipo">
+                <div className="ficha">
+                    <div className="contenido-ficha">
                         <figure>
                             <img src={foto_ignacia} alt=""/> 
                         </figure>
@@ -17,8 +17,8 @@ export default function AboutTeam(){
                     </div>
                 </div>
 
-                <div class="ficha">
-                    <div class="contenido-ficha">
+                <div className="ficha">
+                    <div className="contenido-ficha">
                         <figure>
                             <img src={foto_alex} alt=""/> 
                         </figure>

@@ -4,6 +4,7 @@ import './principal.css'
 import LogoutButton from "../../profile/Logout";
 
 export default function Principal(){
+
     return (
         <main className="principal-content">
         <div className="bg-container"></div>
@@ -14,7 +15,7 @@ export default function Principal(){
                 al centro del tablero antes que tus rivales para 
                 ser coronadx 
             </h3>
-            <Link className="play-button" to="">
+            <Link className="play-button" to="/principal/sala">
                 Iniciar Partida
             </Link>
             <a className="play-button" href="/ver-perfil">
@@ -22,7 +23,8 @@ export default function Principal(){
             </a>
             
         </div>
-        <LogoutButton></LogoutButton>
-    </main>
+           <LogoutButton />
+
+        </main>
     )
 }

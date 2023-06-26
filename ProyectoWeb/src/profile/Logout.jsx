@@ -11,9 +11,11 @@ const LogoutButton = () => {
 
     const handleLogout = () => {
         logout();
-        setMsg("Has hecho logout con éxito!")
+        setMsg("Has cerrado sesión exitosamente")
 
-        navigate('/');  
+        setTimeout(() => {
+            navigate('/');
+          }, 1500);   
     }
 
     return (

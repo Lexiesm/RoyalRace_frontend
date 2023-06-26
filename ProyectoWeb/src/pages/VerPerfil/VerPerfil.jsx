@@ -1,40 +1,55 @@
 import React, { useEffect, useState} from "react";
-import './VerPerfil.css'
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './VerPerfil.css'
 
+export default function VerPerfil() {
+  const [nombre, setNombre] = useState("");
+  const [partidasGanadas, setPartidasGanadas] = useState("");
+  const [partidasTotales, setPartidasTotales] = useState("");
 
-export default function VerPerfil(){
-    const [nombre, SetNombre] = useState("");
-    const [partidasGanadas, SetPartidasGanadas] = useState("");
-    const [partidasTotales, SetPartidasTotales] = useState("");
+    const token = localStorage.getItem('token');
 
-    // Pendiente: cambiar id en url del get cuando exista el manejo de usuario 
-    useEffect(() => {
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/1`)
-            .then((response) => {
-                const data = response.data;
-                SetNombre(data.nombre);
-                SetPartidasGanadas(data.partidas_ganadas);
-                SetPartidasTotales(data.partidas_totales);
-            }).catch((error) => {
-                console.log(error);
-            });
+    const headers = {
+    Authorization: `Bearer ${token}`
+    };
 
-    });
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+        const userData = response.data;
+        setNombre(userData.nombre);
+        setPartidasGanadas(userData.partidas_ganadas);
+        setPartidasTotales(userData.partidas_totales);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-    return (
-        <main className="content-equipo">
-                <div class="ficha">
-                    <div class="contenido-ficha">
-                        <h1>Mi Perfil</h1>
-                        <h2>Nombre:</h2>
-                        <p>{nombre}</p>
-                        <h2>Partidas Ganadas:</h2>
-                        <p>{partidasGanadas}</p>
-                        <h2>Partidas Totales:</h2>
-                        <p>{partidasTotales}</p>
-                    </div>
-                </div>          
-        </main> 
-    )
+    fetchUserData();
+  }, [token]);
+
+  return (
+    <main className="content-equipo">
+      <div className="ficha">
+        <div className="contenido-ficha">
+          <h1>Mi Perfil</h1>
+          <h2>Nombre:</h2>
+          <p>{nombre}</p>
+          <h2>Partidas Ganadas:</h2>
+          <p>{partidasGanadas}</p>
+          <h2>Partidas Totales:</h2>
+          <p>{partidasTotales}</p>
+
+        </div>
+      </div>
+
+      <div>
+        <Link className="back-button" to="/principal">
+          Volver
+        </Link>
+      </div>
+    </main>
+  );
 }

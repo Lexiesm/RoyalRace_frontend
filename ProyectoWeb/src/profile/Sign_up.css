@@ -13,6 +13,13 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+.successMsg {
+    font-size: 20px;
+    background-color: black;
+    border-radius: 5px;
+    color:#91be1d;
+    font-family: 'Courier New', Courier, monospace;
+}
 .Signup form label {
     display: flex;
     flex-direction: column;

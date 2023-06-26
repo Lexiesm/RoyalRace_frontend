@@ -1,0 +1,66 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.square {
+  background-color: #91be1d;
+  position: relative; /* Añadir posición relativa */
+  width: 500px;
+  height: 400px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.number {
+  position: absolute; /* Añadir posición absoluta */
+  top: 10px; /* Ajustar posición vertical */
+  right: 10px; /* Ajustar posición horizontal */
+  border: 1px solid black;
+  padding: 10px;
+  background-color: lightgray;
+  font-weight: bold;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  position: absolute; /* Añadir posición absoluta */
+  top: 30px; /* Ajustar posición vertical */
+  right: 410px; /* Ajustar posición horizontal */
+  border: 1px solid black;
+  padding: 10px;
+  background-color: black;
+  font-weight: bold;
+  color: #91be1d;
+}
+
+.jugador img {
+  width: 40px;
+}
+
+.jugadores {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.jugador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: black;
+  
+}
+
+.nombre {
+  margin-top: 10px;
+  color: white;
+}
