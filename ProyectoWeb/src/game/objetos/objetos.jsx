@@ -9,18 +9,30 @@ const Objetos = () => {
   const [objetos, setObjetos] = useState([]);
   const [showPopUp, setShowPopUp] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const [Id, setId] = useState('');
+  const [nombre, setNombre] = useState("");
+  const token = localStorage.getItem('token');
 
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
 
-  // Actualizar 1 -> ID GAME !! 
   useEffect(() => {
-      const updateObjects = () => {
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/objects/1`)
-        .then(function (response) {
-          setObjetos(response.data);
-        })
-        .catch(function (error) {
+      const updateObjects = async () => {
+        try {
+          
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+        const userData = response.data;
+
+        setId(userData.id);
+
+        const objectos = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/objects/${userData.id}`)
+        setObjetos(objectos.data)  
+
+        } catch (error) {
           console.log(error);
-        });
+        }
+  
     };
 
     // Actualiza los objetos inicialmente
@@ -33,7 +45,7 @@ const Objetos = () => {
     return () => {
       clearInterval(interval);
     };
-  }, []);   
+  }, [objetos]);   
 
   const getImagen = (tipo) => {
     switch (tipo) {

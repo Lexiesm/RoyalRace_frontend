@@ -10,18 +10,42 @@ import PopUpAlerta from '../Alertas/Alertas';
 const PopUpSelecVictim = ({ handleClose, show, selectedId }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
   const [players, setPlayers] = useState([]);
+  const [Id, setId] = useState('');
+  const [game, setGame] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [error, setError] = useState(null);
+  const token = localStorage.getItem('token');
+
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/1/1`)
-      .then(function (response) {
-        setPlayers(response.data);
-      })
-      .catch(function (error) {
+    const fetchJugadoresataque = async () => {
+      try {
+        const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+        const userData = response1.data;
+        setId(userData.id);
+
+        const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${userData.id}`);
+        const DataJuego = juego.data;
+        setGame(DataJuego.id_game);
+
+        
+        const atacar = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${DataJuego.id_game}/${userData.id}`)
+        setPlayers(atacar.data);
+        if (Array.isArray(atacar.data)) {
+          setPlayers(atacar.data);
+        } else {
+          console.log('atacar.data is not an array:', atacar.data);
+        }
+      } catch(error) {
         console.log(error);
-      });
-  }, []);
+      }
+    };
+    fetchJugadoresataque();
+  }, [Id]);
+
 
   const getImagen = (color) => {
     switch (color) {
@@ -53,7 +77,7 @@ const PopUpSelecVictim = ({ handleClose, show, selectedId }) => {
           setError(response.data.error);
           setShowPopup(true);
         } else {
-          axios.patch(`${import.meta.env.VITE_BACKEND_URL}/games/cambiarTurno/1`);
+          axios.patch(`${import.meta.env.VITE_BACKEND_URL}/games/cambiarTurno/${Id}`);
           handleClose(); // Hace que se cierre el Pop Up
         }
       })

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './Crear_sala.css';
 import axios from 'axios';
 import usuarioRojo from '../../assets/icons/usuario_rojo.png';
-import usuarioAmarillo from '../../assets/icons/usuario_amarrillo.png';
+import usuarioAmarillo from '../../assets/icons/usuario_amarillo.png';
 import usuarioVerde from '../../assets/icons/usuario_verde.png';
 import usuarioAzul from '../../assets/icons/usuario_azul.png';
 
@@ -11,7 +11,6 @@ const Crear_sala = () => {
   const [id, setId] = useState("");
   const [color, setColor] = useState("");
   const [idgame, setIdGame] = useState("");
-  const [nombre, setNombre] = useState("");
   const [jugadores, setJugadores] = useState([]);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem('token');
@@ -28,13 +27,13 @@ const Crear_sala = () => {
         const userData = response.data;
 
         setId(userData.id);
-        setNombre(userData.nombre);
 
-        const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${id}`)
+        const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${userData.id}`)
         const playe = player.data;
         setIdGame(playe.id_game);
         setColor(playe.color);
         setLoading(false);
+
       } catch (error) {
         console.log(error);
         setLoading(false);
@@ -83,7 +82,6 @@ const Crear_sala = () => {
               {jugador.color === "amarillo" && <img src={usuarioAmarillo} alt="Usuario Amarillo" />}
               {jugador.color === "verde" && <img src={usuarioVerde} alt="Usuario Verde" />}
               {jugador.color === "azul" && <img src={usuarioAzul} alt="Usuario Azul" />}
-              <div className="nombre">{jugador.id}</div>
             </div>
           ))}
         </div>

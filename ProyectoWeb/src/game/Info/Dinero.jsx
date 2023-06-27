@@ -7,18 +7,28 @@ import coin from '../../assets/icons/coin.png';
 
 const Dinero = () => {
   const [Dinero, setDinero] = useState([]);
+  const [Id, setId] = useState("");
+  const [nombre, setNombre] = useState("");
+  const token = localStorage.getItem('token');
 
-  
-  //  ACTUALIZAR RUTA SEGUN ID player !
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+
   useEffect(() => {
-    const updateDinero = () => {
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/1`)
-          .then(function (response) {
-            setDinero(response.data.dinero);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+    const updateDinero = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+        const userData = response.data;
+        setId(userData.id);
+        setNombre(userData.nombre);
+
+        const playe = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${userData.id}`)
+        setDinero(playe.dinero);
+      } catch (error) {
+        console.log(error);
+      }
+
     };
 
     updateDinero();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import usuarioRojo from '../../assets/icons/usuario_rojo.png';
-import usuarioAmarillo from '../../assets/icons/usuario_amarrillo.png';
+import usuarioAmarillo from '../../assets/icons/usuario_amarillo.png';
 import usuarioVerde from '../../assets/icons/usuario_verde.png';
 import usuarioAzul from '../../assets/icons/usuario_azul.png';
 import aleatorio from '../../assets/icons/aleatorio.png';
@@ -11,6 +11,7 @@ import craneo from '../../assets/icons/craneo.png';
 import ladron from '../../assets/icons/ladron.png';
 import tesoro from '../../assets/icons/tesoro.png';
 import corona from '../../assets/icons/corona.png';
+
 
 export default function BoxButton({ x, y }) {
   const [imageKey, setImageKey] = useState("");

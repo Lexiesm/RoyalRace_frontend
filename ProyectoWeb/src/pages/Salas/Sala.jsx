@@ -9,7 +9,7 @@ export default function Sala() {
     const navigate = useNavigate();
 
 
-    const [id, setId] = useState("");
+    const [Id, setId] = useState("");
     const [availableColors, setAvailableColors] = useState(["rojo", "verde", "azul", "amarillo"]);
     const [coloresDisponibles, setColoresDisponibles] = useState(true);
     const [salaLlena, setSalaLlena] = useState(false);
@@ -36,35 +36,6 @@ export default function Sala() {
         fetchExistingPlayers();
     }, []);
 
-    // const handleCrearSala = async () => {
-    //     try {
-    //         if (!coloresDisponibles) {
-    //             alert("La sala está llena");
-    //             return;
-    //         } else {
-    //         const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
-    //         const userData = response1.data;
-    //         const id = userData.id;
-
-    //         const playerData = {
-    //             id_user: id,
-    //             id_game: 1,
-    //             color: availableColors[0], // Asigna el primer color disponible
-    //             vidas: 3,
-    //             dinero: 50
-    //         }
-        
-    //         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/players`, playerData);
-    //         navigate('/principal/sala/crear_sala');
-        
-    //     };
-
-            
-
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
 
     const handleUnirseSala = async () => {
         try {
@@ -75,10 +46,11 @@ export default function Sala() {
             const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
             const userData = response1.data;
             const id = userData.id;
+            console.log(id);
 
             const playerData = {
                 id_user: id,
-                id_game: 1,
+                id_game: 2,
                 color: availableColors[0], // Asignar el primer color disponible
                 vidas: 3,
                 dinero: 50
