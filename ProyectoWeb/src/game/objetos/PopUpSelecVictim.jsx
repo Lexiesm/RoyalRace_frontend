@@ -10,8 +10,9 @@ import PopUpAlerta from '../Alertas/Alertas';
 const PopUpSelecVictim = ({ handleClose, show, selectedId }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
   const [players, setPlayers] = useState([]);
+  const [IdJugador, setIdJugador] = useState("");
   const [Id, setId] = useState('');
-  const [game, setGame] = useState('');
+  const [Idgame, setGame] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [error, setError] = useState(null);
   const token = localStorage.getItem('token');
@@ -27,18 +28,15 @@ const PopUpSelecVictim = ({ handleClose, show, selectedId }) => {
         const userData = response1.data;
         setId(userData.id);
 
-        const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${userData.id}`);
+
+        const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
         const DataJuego = juego.data;
         setGame(DataJuego.id_game);
+        setIdJugador(DataJuego.id);
 
         
-        const atacar = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${DataJuego.id_game}/${userData.id}`)
-        setPlayers(atacar.data);
-        if (Array.isArray(atacar.data)) {
-          setPlayers(atacar.data);
-        } else {
-          console.log('atacar.data is not an array:', atacar.data);
-        }
+        const DataJugadores = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${DataJuego.id_game}/${userData.id}`)
+        setPlayers(DataJugadores.data);
       } catch(error) {
         console.log(error);
       }
@@ -66,9 +64,9 @@ const PopUpSelecVictim = ({ handleClose, show, selectedId }) => {
   const handleClick = (selectedId, playerId) => {
 
     axios.post(`${import.meta.env.VITE_BACKEND_URL}/atacar`, {
-      id_game: 1,
+      id_game: Idgame,
       id_objeto: selectedId,
-      id_atacante: 1,
+      id_atacante: IdJugador,
       id_afectado: playerId
     })
       .then(function (response) {
@@ -77,7 +75,7 @@ const PopUpSelecVictim = ({ handleClose, show, selectedId }) => {
           setError(response.data.error);
           setShowPopup(true);
         } else {
-          axios.patch(`${import.meta.env.VITE_BACKEND_URL}/games/cambiarTurno/${Id}`);
+          axios.patch(`${import.meta.env.VITE_BACKEND_URL}/games/cambiarTurno/${Idgame}`);
           handleClose(); // Hace que se cierre el Pop Up
         }
       })

@@ -22,7 +22,7 @@ const Vidas = () => {
         setId(userData.id);
         setNombre(userData.nombre);
 
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${userData.id}`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
         setVidas(response.data.vidas);
       } catch (error) {
         console.log(error);

@@ -28,11 +28,11 @@ const TurnoActual = () => {
 
         setId(userData.id);
 
-        const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${userData.id}`)
-        const playe = player.data;
-        setIdGame(playe.id_game);
+        const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`)
+        const idGame = player.data;
+        setIdGame(idGame.id_game);
 
-        const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games/${playe.id_game}`)
+        const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games/${idGame.id_game}`)
         setTurnoActual(juego.data);
         
       } catch (error) {

@@ -9,8 +9,6 @@ const Objetos = () => {
   const [objetos, setObjetos] = useState([]);
   const [showPopUp, setShowPopUp] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-  const [Id, setId] = useState('');
-  const [nombre, setNombre] = useState("");
   const token = localStorage.getItem('token');
 
   const headers = {
@@ -23,8 +21,6 @@ const Objetos = () => {
           
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
         const userData = response.data;
-
-        setId(userData.id);
 
         const objectos = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/objects/${userData.id}`)
         setObjetos(objectos.data)  

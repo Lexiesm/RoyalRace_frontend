@@ -37,8 +37,10 @@ export default function Sala() {
     }, []);
 
 
-    const handleUnirseSala = async () => {
+    const handleUnirseSala = async () => { 
+        let IdDataJuego = "";
         try {
+            
             if (!coloresDisponibles) {
                 alert("La sala está llena");
                 return;
@@ -47,10 +49,31 @@ export default function Sala() {
             const userData = response1.data;
             const id = userData.id;
             console.log(id);
+        
+                if (availableColors[0] === "rojo") { 
+
+                    const TurnoActual = {
+                        turno_actual: "rojo"
+                    }
+                    const juego = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/games`, TurnoActual);
+                    IdDataJuego = juego.data.id;    
+                    
+                    const Datos = {
+                        id_game: IdDataJuego
+                    }
+                    
+                    await axios.post(`${import.meta.env.VITE_BACKEND_URL}/boxes`, Datos);          
+
+                } else {
+                    const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+                    IdDataJuego = juego.data.id;
+                }
+ 
+
 
             const playerData = {
                 id_user: id,
-                id_game: 2,
+                id_game: IdDataJuego,
                 color: availableColors[0], // Asignar el primer color disponible
                 vidas: 3,
                 dinero: 50
@@ -60,7 +83,6 @@ export default function Sala() {
             navigate('/principal/sala/crear_sala');
         
         };
-
           
 
         } catch (error) {
@@ -79,6 +101,7 @@ export default function Sala() {
                 </Link> */}
                 <Link className="play-button" onClick={handleUnirseSala}>
                     Unirse a una sala
+
                 </Link>
                 <br />
             </div>

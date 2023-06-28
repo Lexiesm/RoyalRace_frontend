@@ -8,7 +8,6 @@ import coin from '../../assets/icons/coin.png';
 const Dinero = () => {
   const [Dinero, setDinero] = useState([]);
   const [Id, setId] = useState("");
-  const [nombre, setNombre] = useState("");
   const token = localStorage.getItem('token');
 
   const headers = {
@@ -21,10 +20,11 @@ const Dinero = () => {
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
         const userData = response.data;
         setId(userData.id);
-        setNombre(userData.nombre);
 
-        const playe = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${userData.id}`)
-        setDinero(playe.dinero);
+        const playe = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+        const data = playe.data;
+        setDinero(data.dinero);
+
       } catch (error) {
         console.log(error);
       }

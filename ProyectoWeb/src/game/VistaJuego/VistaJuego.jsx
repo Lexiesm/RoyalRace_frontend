@@ -8,6 +8,7 @@ import TurnoActual from '../Info/TurnoActual';
 import Dinero from '../Info/Dinero';
 import Vidas from '../Info/Vidas';
 import ColorJugador from '../Info/Color';
+import axios from 'axios';
 
 import './VistaJuego.css';
 
@@ -24,6 +25,17 @@ const VistaJuego = () => {
   };
   const togglePopupTienda = () => {
     setShowPopupTienda(!showPopupTienda);
+  };
+
+  const EliminarPartida = async () => {
+    try {
+      const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+      const IdJuego = juego.data.id;
+
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/games/${IdJuego}`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -52,6 +64,8 @@ const VistaJuego = () => {
             <button className="basic-button" onClick={togglePopupTienda}>Tienda</button>
             <PopUpTienda show={showPopupTienda} handleClose={togglePopupTienda}>
             </PopUpTienda>
+
+            {/* <button className="basic-button" href = "/principal" onClick={EliminarPartida}> Salir </button> */}
           </div>
         </div>
       </div>

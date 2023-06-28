@@ -11,11 +11,21 @@ import craneo from '../../assets/icons/craneo.png';
 import ladron from '../../assets/icons/ladron.png';
 import tesoro from '../../assets/icons/tesoro.png';
 import corona from '../../assets/icons/corona.png';
+import PopUpAlerta from "../Alertas/Alertas";
 
 
 export default function BoxButton({ x, y }) {
+  const [data, setData] = useState(null);
   const [imageKey, setImageKey] = useState("");
   const [backgroundImageUrl, setBackgroundImageUrl] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+  const token = localStorage.getItem('token');
+
+
+  
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
 
   const images = {
     aleatorio,
@@ -28,8 +38,12 @@ export default function BoxButton({ x, y }) {
   };
 
   useEffect(() => {
-    const updateBoard = () => {
-      axios.get(`${import.meta.env.VITE_BACKEND_URL}/boxes/1/${x}/${y}`)
+
+    const updateBoard = async () => {
+      const game = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+      const DataGame = game.data;
+
+      await axios.get(`${import.meta.env.VITE_BACKEND_URL}/boxes/${DataGame.id}/${x}/${y}`)
         .then((response) => {
           const data = response.data;
           setImageKey(data.tipo);
@@ -75,5 +89,58 @@ export default function BoxButton({ x, y }) {
     backgroundColor: 'black',
   };
 
-  return <button className="box-button" style={backgroundImageStyle}></button>;
-}
+  const Moverse = async () => {
+    try {
+      const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+      const userData = response1.data;
+
+      const Player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+      const DataPlayer = Player.data;
+      console.log(DataPlayer.id);
+
+      // const DatosMoverse = {
+      //   id_player: DataPlayer.id,
+      //   x: x,
+      //   y: y
+      // }
+
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/moverse`, {
+        id_player: DataPlayer.id,
+        x: x,
+        y: y
+      })
+      .then(function (response) {
+        console.log(response.data);
+        setData(response.data);
+        if (response.data.error) {
+          setShowPopup(true);
+        } else {
+          handleClose();
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+  const handleTogglePopup = () => {
+    setShowPopup(!showPopup);
+  }
+
+
+  return (
+  <>
+  <button className="box-button" onClick={Moverse} style={backgroundImageStyle}></button>
+    {data && data.error && (
+        <PopUpAlerta show={showPopup} handleClose={handleTogglePopup}>
+          {data.error}
+        </PopUpAlerta>
+      )}
+  </>
+)};
