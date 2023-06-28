@@ -78,6 +78,20 @@ export default function Sala() {
                 vidas: 3,
                 dinero: 50
             }
+
+            if (playerData.color == "rojo"){
+                playerData.posicion_x = 1;
+                playerData.posicion_y = 1;
+            } else if (playerData.color == "amarillo"){
+                playerData.posicion_x = 1;
+                playerData.posicion_y = 9;
+            } else if (playerData.color == "verde"){
+                playerData.posicion_x = 9;
+                playerData.posicion_y = 1;
+            } else if (playerData.color == "azul"){
+                playerData.posicion_x = 9;
+                playerData.posicion_y = 1;
+            };
         
             const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/players`, playerData);
             navigate('/principal/sala/crear_sala');

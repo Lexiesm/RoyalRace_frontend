@@ -11,6 +11,10 @@ import craneo from '../../assets/icons/craneo.png';
 import ladron from '../../assets/icons/ladron.png';
 import tesoro from '../../assets/icons/tesoro.png';
 import corona from '../../assets/icons/corona.png';
+import amarillo from '../../assets/icons/usuario_amarillo.png';
+import verde from '../../assets/icons/usuario_verde.png';
+import rojo from '../../assets/icons/usuario_rojo.png';
+import azul from '../../assets/icons/usuario_azul.png';
 import PopUpAlerta from "../Alertas/Alertas";
 
 
@@ -34,7 +38,11 @@ export default function BoxButton({ x, y }) {
     craneo,
     ladron,
     tesoro,
-    corona
+    corona,
+    amarillo,
+    verde,
+    rojo,
+    azul
   };
 
   useEffect(() => {
@@ -46,7 +54,7 @@ export default function BoxButton({ x, y }) {
       await axios.get(`${import.meta.env.VITE_BACKEND_URL}/boxes/${DataGame.id}/${x}/${y}`)
         .then((response) => {
           const data = response.data;
-          setImageKey(data.tipo);
+          setImageKey(data.ruta_img);
         })
         .catch((error) => {
           console.log(error);
@@ -62,11 +70,12 @@ export default function BoxButton({ x, y }) {
     };
   }, [x, y]);
 
+  
   useEffect(() => {
     let imageUrl = images[imageKey];
 
     // Asignar los iconos de los jugadores a las casillas correspondientes
-    if ((x === 1 && y === 1) || (x === 1 && y === 9) || (x === 9 && y === 1) || (x === 9 && y === 9)) {
+    /*if ((x === 1 && y === 1) || (x === 1 && y === 9) || (x === 9 && y === 1) || (x === 9 && y === 9)) {
       if (x === 1 && y === 1) {
         imageUrl = usuarioRojo;
       } else if (x === 1 && y === 9) {
@@ -76,7 +85,7 @@ export default function BoxButton({ x, y }) {
       } else if (x === 9 && y === 9) {
         imageUrl = usuarioAzul;
       }
-    }
+    }*/
 
     setBackgroundImageUrl(imageUrl);
   }, [imageKey, images, x, y]);
@@ -96,6 +105,7 @@ export default function BoxButton({ x, y }) {
 
       const Player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
       const DataPlayer = Player.data;
+      const Idgame = DataPlayer.id_game;
       console.log(DataPlayer.id);
 
       // const DatosMoverse = {
@@ -115,7 +125,7 @@ export default function BoxButton({ x, y }) {
         if (response.data.error) {
           setShowPopup(true);
         } else {
-          handleClose();
+          axios.patch(`${import.meta.env.VITE_BACKEND_URL}/games/cambiarTurno/${Idgame}`);
         }
       })
       .catch(function (error) {
