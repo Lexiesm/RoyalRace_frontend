@@ -61,6 +61,7 @@ const VistaJuego = () => {
       const EstadoGame = game.data.estado;
 
       if (EstadoGame != 'Activa' && EstadoGame != null){
+        console.log(EstadoGame);
         SetEstadoPartida(EstadoGame);
         togglePopupFinal();
 
