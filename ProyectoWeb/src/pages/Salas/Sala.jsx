@@ -90,7 +90,7 @@ export default function Sala() {
                 playerData.posicion_y = 1;
             } else if (playerData.color == "azul"){
                 playerData.posicion_x = 9;
-                playerData.posicion_y = 1;
+                playerData.posicion_y = 9;
             };
         
             const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/players`, playerData);
