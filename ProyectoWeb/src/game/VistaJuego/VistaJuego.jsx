@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PopUpFinal from '../PopUpFinal/PopUpFinal';
 import PopUpJugadas from '../Jugadas/Jugadas';
 import PopUpReglas from '../PopUpReglas/PopUpReglas';
@@ -18,6 +18,7 @@ const VistaJuego = () => {
   const [showPopupReglas, setShowPopupReglas] = useState(false);
   const [showPopupTienda, setShowPopupTienda] = useState(false);
   const [showPopupFinal, setShowPopupFinal] = useState(false);
+  const [EstadoPartida, SetEstadoPartida] = useState("");
 
   const togglePopupJugadas = () => {
     setShowPopupJugadas(!showPopupJugadas);
@@ -40,8 +41,32 @@ const VistaJuego = () => {
       await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/games/${IdJuego}`);
     } catch (error) {
       console.log(error);
+      
     }
   };
+
+  useEffect(() => {
+
+    const updateEstado = async () => {
+      const game = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+      const EstadoGame = game.data.estado;
+
+      if (EstadoGame != 'Activa'){
+        SetEstadoPartida(EstadoGame);
+        setShowPopupFinal(!showPopupFinal);
+      }
+
+
+    };
+
+    updateEstado();
+
+    const interval = setInterval(updateEstado, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <main>
@@ -70,8 +95,7 @@ const VistaJuego = () => {
             <PopUpTienda show={showPopupTienda} handleClose={togglePopupTienda}>
             </PopUpTienda>
 
-            <button className="basic-button" onClick={togglePopupFinal}>Final</button>
-            <PopUpFinal estado = {'verde'} show={showPopupFinal} handleClose={togglePopupFinal}>
+            <PopUpFinal estado = {EstadoPartida} show={showPopupFinal} handleClose={togglePopupFinal}>
             </PopUpFinal>
 
             {/* <button className="basic-button" href = "/principal" onClick={EliminarPartida}> Salir </button> */}
