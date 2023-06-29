@@ -30,7 +30,7 @@ const PopUpFinal = ({ estado, handleClose, show }) => {
           <section className="modal-mainF">
             <h1>Partida Finalizada</h1>
             <p>No hay Ganador</p>
-            <button className="close-button" onClick={handleClose}>
+            <button className="close-button" onClick={handleClose} >
             <span className="close-icon">&#10006;</span>
             </button>
           </section>
@@ -43,9 +43,6 @@ const PopUpFinal = ({ estado, handleClose, show }) => {
             <h1>Partida Finalizada</h1>
             <p></p>
             <img src={getImagen(estado)}/>
-            <button className="close-button" onClick={handleClose}>
-            <span className="close-icon">&#10006;</span>
-            </button>
           </section>
         </div>
       );

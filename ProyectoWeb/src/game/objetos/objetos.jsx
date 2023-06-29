@@ -22,7 +22,9 @@ const Objetos = () => {
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
         const userData = response.data;
 
-        const objectos = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/objects/${userData.id}`)
+        const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+
+        const objectos = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/objects/${player.data.id}`)
         setObjetos(objectos.data)  
 
         } catch (error) {

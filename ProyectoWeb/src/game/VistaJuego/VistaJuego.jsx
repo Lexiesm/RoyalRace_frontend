@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import PopUpFinal from '../PopUpFinal/PopUpFinal';
 import PopUpJugadas from '../Jugadas/Jugadas';
 import PopUpReglas from '../PopUpReglas/PopUpReglas';
@@ -14,6 +15,8 @@ import axios from 'axios';
 import './VistaJuego.css';
 
 const VistaJuego = () => {
+  const navigate = useNavigate();
+
   const [showPopupJugadas, setShowPopupJugadas] = useState(false);
   const [showPopupReglas, setShowPopupReglas] = useState(false);
   const [showPopupTienda, setShowPopupTienda] = useState(false);
@@ -38,7 +41,13 @@ const VistaJuego = () => {
       const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
       const IdJuego = juego.data.id;
 
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/plays/AllGame/${IdJuego}`);
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/players/AllGame/${IdJuego}`);
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/boxes/AllGame/${IdJuego}`);
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/objects`);
+
       await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/games/${IdJuego}`);
+
     } catch (error) {
       console.log(error);
       
@@ -51,15 +60,19 @@ const VistaJuego = () => {
       const game = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
       const EstadoGame = game.data.estado;
 
-      if (EstadoGame != 'Activa'){
+      if (EstadoGame != 'Activa' && EstadoGame != null){
         SetEstadoPartida(EstadoGame);
-        setShowPopupFinal(!showPopupFinal);
+        togglePopupFinal();
+
+        setTimeout(() => {
+          console.log('partida terminada')
+          navigate("/principal");
+          EliminarPartida();
+
+        }, 15000);
       }
 
-
     };
-
-    updateEstado();
 
     const interval = setInterval(updateEstado, 5000);
 
