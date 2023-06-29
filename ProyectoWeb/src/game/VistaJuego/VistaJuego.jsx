@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PopUpFinal from '../PopUpFinal/PopUpFinal';
 import PopUpJugadas from '../Jugadas/Jugadas';
 import PopUpReglas from '../PopUpReglas/PopUpReglas';
 import PopUpTienda from '../Tienda/Tienda';
@@ -16,6 +17,7 @@ const VistaJuego = () => {
   const [showPopupJugadas, setShowPopupJugadas] = useState(false);
   const [showPopupReglas, setShowPopupReglas] = useState(false);
   const [showPopupTienda, setShowPopupTienda] = useState(false);
+  const [showPopupFinal, setShowPopupFinal] = useState(false);
 
   const togglePopupJugadas = () => {
     setShowPopupJugadas(!showPopupJugadas);
@@ -25,6 +27,9 @@ const VistaJuego = () => {
   };
   const togglePopupTienda = () => {
     setShowPopupTienda(!showPopupTienda);
+  };
+  const togglePopupFinal = () => {
+    setShowPopupFinal(!showPopupFinal);
   };
 
   const EliminarPartida = async () => {
@@ -64,6 +69,10 @@ const VistaJuego = () => {
             <button className="basic-button" onClick={togglePopupTienda}>Tienda</button>
             <PopUpTienda show={showPopupTienda} handleClose={togglePopupTienda}>
             </PopUpTienda>
+
+            <button className="basic-button" onClick={togglePopupFinal}>Final</button>
+            <PopUpFinal estado = {'verde'} show={showPopupFinal} handleClose={togglePopupFinal}>
+            </PopUpFinal>
 
             {/* <button className="basic-button" href = "/principal" onClick={EliminarPartida}> Salir </button> */}
           </div>
