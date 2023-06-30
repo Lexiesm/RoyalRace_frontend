@@ -20,8 +20,9 @@ export default function VerPerfil() {
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
         const userData = response.data;
         setNombre(userData.nombre);
-        setPartidasGanadas(userData.partidas_ganadas);
-        setPartidasTotales(userData.partidas_totales);
+        setPartidasGanadas(userData.partidasGanadas);
+        setPartidasTotales(userData.partidasTotales);
+        
       } catch (error) {
         console.log(error);
       }

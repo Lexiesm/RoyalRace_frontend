@@ -8,32 +8,44 @@ import azul from '../../assets/icons/usuario_azul.png';
 
 const ColorJugador = () => {
     const [Color, setColor] = useState([]);
+    const [Id, setId] = useState("");
+    const token = localStorage.getItem('token');
+    const headers = {
+        Authorization: `Bearer ${token}`
+      };
 
     // CAMBIAR ID PLAYER
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/1`)
-        .then(function (response) {
-            setColor(response.data.color);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    }, []);
+        const fetchUserData = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+                const userData = response.data;
+                setId(userData.id);
 
-    const getImagen = (color) => {
-        switch (color) {
-            case 'amarillo':
-                return amarillo;
-            case 'rojo':
-                return rojo;
-            case 'verde':
-                return verde;
-            case 'azul':
-                return azul;
-            default:
-                return null;
-        }
-    }
+                const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+                const playe = player.data;
+                setColor(playe.color);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            fetchUserData()
+        }, []);
+
+            const getImagen = (color) => {
+                switch (color) {
+                    case 'amarillo':
+                        return amarillo;
+                    case 'rojo':
+                        return rojo;
+                    case 'verde':
+                        return verde;
+                    case 'azul':
+                        return azul;
+                    default:
+                        return null;
+                }
+            }
     
     return (
         <main className='main-color'>

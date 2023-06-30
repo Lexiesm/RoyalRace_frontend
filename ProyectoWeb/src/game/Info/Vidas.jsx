@@ -5,12 +5,24 @@ import corazon from '../../assets/icons/corazon_verde.png';
 
 const Vidas = () => {
   const [vidas, setVidas] = useState([]);
+  const [Id, setId] = useState("");
+  const [nombre, setNombre] = useState("");
+  const token = localStorage.getItem('token');
 
-  // CAMBIAR ID PLAYER
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+
   useEffect(() => {
     const fetchVidas = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/1`);
+        const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+        const userData = response1.data;
+
+        setId(userData.id);
+        setNombre(userData.nombre);
+
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
         setVidas(response.data.vidas);
       } catch (error) {
         console.log(error);

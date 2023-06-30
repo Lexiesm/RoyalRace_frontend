@@ -9,18 +9,36 @@ import azul from '../../assets/icons/usuario_azul.png';
 
 const TurnoActual = () => {
   const [TurnoActual, setTurnoActual] = useState([]);
+  const [idgame, setIdGame] = useState("");
+  const [id, setId] = useState("");
+
+  const token = localStorage.getItem('token');
+
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
 
   
   //  ACTUALIZAR RUTA SEGUN ID GAME !
   useEffect(() => {
-    const updateTurnoActual = () => {
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/games/1`)
-          .then(function (response) {
-            setTurnoActual(response.data);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+    const updateTurnoActual = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+        const userData = response.data;
+
+        setId(userData.id);
+
+        const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`)
+        const idGame = player.data;
+        setIdGame(idGame.id_game);
+
+        const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games/${idGame.id_game}`)
+        setTurnoActual(juego.data);
+        
+      } catch (error) {
+        console.log(error);
+      }
+
     };
 
     updateTurnoActual();

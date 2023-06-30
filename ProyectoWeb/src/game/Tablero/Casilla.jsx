@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import usuarioRojo from '../../assets/icons/usuario_rojo.png';
-import usuarioAmarillo from '../../assets/icons/usuario_amarrillo.png';
+import usuarioAmarillo from '../../assets/icons/usuario_amarillo.png';
 import usuarioVerde from '../../assets/icons/usuario_verde.png';
 import usuarioAzul from '../../assets/icons/usuario_azul.png';
 import aleatorio from '../../assets/icons/aleatorio.png';
@@ -11,10 +11,25 @@ import craneo from '../../assets/icons/craneo.png';
 import ladron from '../../assets/icons/ladron.png';
 import tesoro from '../../assets/icons/tesoro.png';
 import corona from '../../assets/icons/corona.png';
+import amarillo from '../../assets/icons/usuario_amarillo.png';
+import verde from '../../assets/icons/usuario_verde.png';
+import rojo from '../../assets/icons/usuario_rojo.png';
+import azul from '../../assets/icons/usuario_azul.png';
+import PopUpAlerta from "../Alertas/Alertas";
+
 
 export default function BoxButton({ x, y }) {
+  const [data, setData] = useState(null);
   const [imageKey, setImageKey] = useState("");
   const [backgroundImageUrl, setBackgroundImageUrl] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+  const token = localStorage.getItem('token');
+
+
+  
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
 
   const images = {
     aleatorio,
@@ -23,15 +38,23 @@ export default function BoxButton({ x, y }) {
     craneo,
     ladron,
     tesoro,
-    corona
+    corona,
+    amarillo,
+    verde,
+    rojo,
+    azul
   };
 
   useEffect(() => {
-    const updateBoard = () => {
-      axios.get(`${import.meta.env.VITE_BACKEND_URL}/boxes/1/${x}/${y}`)
+
+    const updateBoard = async () => {
+      const game = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+      const DataGame = game.data;
+
+      await axios.get(`${import.meta.env.VITE_BACKEND_URL}/boxes/${DataGame.id}/${x}/${y}`)
         .then((response) => {
           const data = response.data;
-          setImageKey(data.tipo);
+          setImageKey(data.ruta_img);
         })
         .catch((error) => {
           console.log(error);
@@ -47,11 +70,12 @@ export default function BoxButton({ x, y }) {
     };
   }, [x, y]);
 
+  
   useEffect(() => {
     let imageUrl = images[imageKey];
 
     // Asignar los iconos de los jugadores a las casillas correspondientes
-    if ((x === 1 && y === 1) || (x === 1 && y === 9) || (x === 9 && y === 1) || (x === 9 && y === 9)) {
+    /*if ((x === 1 && y === 1) || (x === 1 && y === 9) || (x === 9 && y === 1) || (x === 9 && y === 9)) {
       if (x === 1 && y === 1) {
         imageUrl = usuarioRojo;
       } else if (x === 1 && y === 9) {
@@ -61,7 +85,7 @@ export default function BoxButton({ x, y }) {
       } else if (x === 9 && y === 9) {
         imageUrl = usuarioAzul;
       }
-    }
+    }*/
 
     setBackgroundImageUrl(imageUrl);
   }, [imageKey, images, x, y]);
@@ -74,5 +98,59 @@ export default function BoxButton({ x, y }) {
     backgroundColor: 'black',
   };
 
-  return <button className="box-button" style={backgroundImageStyle}></button>;
-}
+  const Moverse = async () => {
+    try {
+      const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+      const userData = response1.data;
+
+      const Player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+      const DataPlayer = Player.data;
+      const Idgame = DataPlayer.id_game;
+      console.log(DataPlayer.id);
+
+      // const DatosMoverse = {
+      //   id_player: DataPlayer.id,
+      //   x: x,
+      //   y: y
+      // }
+
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/moverse`, {
+        id_player: DataPlayer.id,
+        x: x,
+        y: y
+      })
+      .then(function (response) {
+        console.log(response.data);
+        setData(response.data);
+        if (response.data.error) {
+          setShowPopup(true);
+        } else {
+          axios.patch(`${import.meta.env.VITE_BACKEND_URL}/games/cambiarTurno/${Idgame}`);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+  const handleTogglePopup = () => {
+    setShowPopup(!showPopup);
+  }
+
+
+  return (
+  <>
+  <button className="box-button" onClick={Moverse} style={backgroundImageStyle}></button>
+    {data && data.error && (
+        <PopUpAlerta show={showPopup} handleClose={handleTogglePopup}>
+          {data.error}
+        </PopUpAlerta>
+      )}
+  </>
+)};
