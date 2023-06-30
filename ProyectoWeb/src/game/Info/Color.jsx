@@ -22,8 +22,8 @@ const ColorJugador = () => {
                 const userData = response.data;
                 setId(userData.id);
 
-                const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`)
-                const playe = player.data
+                const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+                const playe = player.data;
                 setColor(playe.color);
                 } catch (error) {
                     console.log(error);

@@ -9,14 +9,15 @@ const PopUpJugadas = ({ handleClose, show }) => {
   
   //  ACTUALIZAR RUTA SEGUN ID GAME !
   useEffect(() => {
-    const updateJugadas = () => {
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/plays/1`)
-          .then(function (response) {
-            setJugadas(response.data);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+    const updateJugadas = async () => {
+
+      try{
+        const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+        const respuesta = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/plays/${juego.data.id}`);
+        setJugadas(respuesta.data);
+      } catch (error){
+        console.log(error);
+      }
     };
 
     updateJugadas();

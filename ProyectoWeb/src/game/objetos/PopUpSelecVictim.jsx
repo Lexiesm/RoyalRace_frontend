@@ -34,8 +34,9 @@ const PopUpSelecVictim = ({ handleClose, show, selectedId }) => {
         setGame(DataJuego.id_game);
         setIdJugador(DataJuego.id);
 
-        
-        const DataJugadores = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${DataJuego.id_game}/${userData.id}`)
+        const DataPlayer = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+
+        const DataJugadores = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${DataJuego.id_game}/${DataPlayer.data.id}`)
         setPlayers(DataJugadores.data);
       } catch(error) {
         console.log(error);
