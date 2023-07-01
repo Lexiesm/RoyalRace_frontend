@@ -74,7 +74,7 @@ const Crear_sala = () => {
   return (
     <div className="center">
       <div className="square">
-        <div className="number">Juego {idgame}</div>
+        <div className="number"></div>
         <div className="jugadores">
           {jugadores.map((jugador) => (
             <div key={jugador.id} className="jugador">
