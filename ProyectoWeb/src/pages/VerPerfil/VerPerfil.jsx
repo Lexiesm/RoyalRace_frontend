@@ -2,6 +2,7 @@ import React, { useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './VerPerfil.css'
+import API_URL from '../../../config';
 
 export default function VerPerfil() {
   const [nombre, setNombre] = useState("");
@@ -17,7 +18,7 @@ export default function VerPerfil() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+        const response = await axios.get(`${API_URL}/users/me`, {headers});
         const userData = response.data;
         setNombre(userData.nombre);
         setPartidasGanadas(userData.partidasGanadas);

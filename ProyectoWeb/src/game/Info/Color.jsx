@@ -5,6 +5,7 @@ import amarillo from '../../assets/icons/usuario_amarillo.png';
 import verde from '../../assets/icons/usuario_verde.png';
 import rojo from '../../assets/icons/usuario_rojo.png';
 import azul from '../../assets/icons/usuario_azul.png';
+import API_URL from '../../../config';
 
 const ColorJugador = () => {
     const [Color, setColor] = useState([]);
@@ -18,11 +19,11 @@ const ColorJugador = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+                const response = await axios.get(`${API_URL}/users/me`, {headers});
                 const userData = response.data;
                 setId(userData.id);
 
-                const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+                const player = await axios.get(`${API_URL}/players/user/${userData.id}`);
                 const playe = player.data;
                 setColor(playe.color);
                 } catch (error) {

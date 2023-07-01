@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Sala.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../../../config';
 
 export default function Sala() {
 
@@ -21,7 +22,7 @@ export default function Sala() {
     useEffect(() => {
         const fetchExistingPlayers = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players`);
+                const response = await axios.get(`${API_URL}/players`);
                 const existingPlayers = response.data;
                 const occupiedColors = existingPlayers.map(player => player.color);
                 const remainingColors = availableColors.filter(color => !occupiedColors.includes(color));
@@ -45,7 +46,7 @@ export default function Sala() {
                 alert("La sala está llena");
                 return;
             } else {
-            const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+            const response1 = await axios.get(`${API_URL}/users/me`, {headers});
             const userData = response1.data;
             const id = userData.id;
             console.log(id);
@@ -56,17 +57,17 @@ export default function Sala() {
                     const TurnoActual = {
                         turno_actual: "rojo"
                     }
-                    const juego = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/games`, TurnoActual);
+                    const juego = await axios.post(`${API_URL}/games`, TurnoActual);
                     IdDataJuego = juego.data.id;    
                     
                     const Datos = {
                         id_game: IdDataJuego
                     }
                     
-                    await axios.post(`${import.meta.env.VITE_BACKEND_URL}/boxes`, Datos);          
+                    await axios.post(`${API_URL}/boxes`, Datos);          
 
                 } else {
-                    const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+                    const juego = await axios.get(`${API_URL}/games`);
                     IdDataJuego = juego.data.id;
                 }
  
@@ -94,7 +95,7 @@ export default function Sala() {
                 playerData.posicion_y = 9;
             };
         
-            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/players`, playerData);
+            await axios.post(`${API_URL}/players`, playerData);
             navigate('/principal/sala/crear_sala');
         
         };

@@ -4,6 +4,8 @@ import axios from 'axios';
 import escudo from '../../assets/icons/escudo.png';
 import espada from '../../assets/icons/espada.png';
 import PopUpSelecVictim from './PopUpSelecVictim';
+import API_URL from '../../../config';
+
 
 const Objetos = () => {
   const [objetos, setObjetos] = useState([]);
@@ -19,12 +21,12 @@ const Objetos = () => {
       const updateObjects = async () => {
         try {
           
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+        const response = await axios.get(`${API_URL}/users/me`, {headers});
         const userData = response.data;
 
-        const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+        const player = await axios.get(`${API_URL}/players/user/${userData.id}`);
 
-        const objectos = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/objects/${player.data.id}`)
+        const objectos = await axios.get(`${API_URL}/objects/${player.data.id}`)
         setObjetos(objectos.data)  
 
         } catch (error) {

@@ -12,7 +12,7 @@ import verde from '../../assets/icons/usuario_verde.png';
 import rojo from '../../assets/icons/usuario_rojo.png';
 import azul from '../../assets/icons/usuario_azul.png';
 import PopUpAlerta from "../Alertas/Alertas";
-
+import API_URL from '../../../config';
 
 export default function BoxButton({ x, y }) {
   const [data, setData] = useState(null);
@@ -44,10 +44,10 @@ export default function BoxButton({ x, y }) {
   useEffect(() => {
 
     const updateBoard = async () => {
-      const game = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+      const game = await axios.get(`${API_URL}/games`);
       const DataGame = game.data;
 
-      await axios.get(`${import.meta.env.VITE_BACKEND_URL}/boxes/${DataGame.id}/${x}/${y}`)
+      await axios.get(`${API_URL}/boxes/${DataGame.id}/${x}/${y}`)
         .then((response) => {
           const data = response.data;
           setImageKey(data.ruta_img);
@@ -83,15 +83,15 @@ export default function BoxButton({ x, y }) {
 
   const Moverse = async () => {
     try {
-      const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+      const response1 = await axios.get(`${API_URL}/users/me`, {headers});
       const userData = response1.data;
 
-      const Player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+      const Player = await axios.get(`${API_URL}/players/user/${userData.id}`);
       const DataPlayer = Player.data;
       const Idgame = DataPlayer.id_game;
       console.log(DataPlayer.id);
 
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/moverse`, {
+      await axios.post(`${API_URL}/moverse`, {
         id_player: DataPlayer.id,
         x: x,
         y: y
@@ -102,7 +102,7 @@ export default function BoxButton({ x, y }) {
         if (response.data.error) {
           setShowPopup(true);
         } else {
-          axios.patch(`${import.meta.env.VITE_BACKEND_URL}/games/cambiarTurno/${Idgame}`);
+          axios.patch(`${API_URL}/games/cambiarTurno/${Idgame}`);
         }
       })
       .catch(function (error) {

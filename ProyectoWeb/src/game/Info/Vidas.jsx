@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Info.css';
 import axios from 'axios';
 import corazon from '../../assets/icons/corazon_verde.png';
+import API_URL from '../../../config';
 
 const Vidas = () => {
   const [vidas, setVidas] = useState([]);
@@ -16,13 +17,13 @@ const Vidas = () => {
   useEffect(() => {
     const fetchVidas = async () => {
       try {
-        const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+        const response1 = await axios.get(`${API_URL}/users/me`, {headers});
         const userData = response1.data;
 
         setId(userData.id);
         setNombre(userData.nombre);
 
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+        const response = await axios.get(`${API_URL}/players/user/${userData.id}`);
         setVidas(response.data.vidas);
       } catch (error) {
         console.log(error);

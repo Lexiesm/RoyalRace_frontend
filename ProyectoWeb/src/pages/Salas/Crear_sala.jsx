@@ -6,6 +6,7 @@ import usuarioRojo from '../../assets/icons/usuario_rojo.png';
 import usuarioAmarillo from '../../assets/icons/usuario_amarillo.png';
 import usuarioVerde from '../../assets/icons/usuario_verde.png';
 import usuarioAzul from '../../assets/icons/usuario_azul.png';
+import API_URL from '../../../config';
 
 const Crear_sala = () => {
   const [id, setId] = useState("");
@@ -23,12 +24,12 @@ const Crear_sala = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+        const response = await axios.get(`${API_URL}/users/me`, {headers});
         const userData = response.data;
 
         setId(userData.id);
 
-        const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`)
+        const player = await axios.get(`${API_URL}/players/user/${userData.id}`)
         const playe = player.data;
         setIdGame(playe.id_game);
         setColor(playe.color);
@@ -46,7 +47,7 @@ const Crear_sala = () => {
   useEffect(() => {
     const fetchJugadoresData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players`);
+        const response = await axios.get(`${API_URL}/players`);
         const jugadoresData = response.data;
         setJugadores(jugadoresData);
 

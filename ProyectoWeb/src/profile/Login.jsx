@@ -3,6 +3,7 @@ import './Login.css';
 import axios from 'axios'; 
 import { AuthContext } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../../config';
 
 
 function Login() {
@@ -19,7 +20,7 @@ function Login() {
 
         console.log("Apretaste el form");   
         // vamos a enviar un post a la ruta login
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`,
+        axios.post(`${API_URL}/login`,
         {
             correo,
             clave

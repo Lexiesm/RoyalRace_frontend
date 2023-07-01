@@ -3,6 +3,7 @@ import './Sign_up.css';
 import axios from 'axios'; 
 import { AuthContext } from '../auth/AuthContext';
 import {useNavigate} from 'react-router-dom';
+import API_URL from '../../config';
 
 
 function Signup() {
@@ -12,6 +13,7 @@ function Signup() {
     const [clave, setPassword] = useState("");
     const [msg, setMsg] = useState("");
     const [error, setError] = useState(false);
+
     
     const navigate = useNavigate();
 
@@ -22,7 +24,7 @@ function Signup() {
 
         console.log("Apretaste el form");
         // vamos a enviar un post a la ruta login
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/signup`,
+        axios.post(`${API_URL}/signup`,
         {   
             nombre,
             correo,

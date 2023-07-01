@@ -11,6 +11,7 @@ import Dinero from '../Info/Dinero';
 import Vidas from '../Info/Vidas';
 import ColorJugador from '../Info/Color';
 import axios from 'axios';
+import API_URL from '../../../config';
 
 
 import './VistaJuego.css';
@@ -47,13 +48,13 @@ const VistaJuego = () => {
 
   const PlayerEspectador = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+      const response = await axios.get(`${API_URL}/users/me`, {headers});
       const userData = response.data;
 
-      const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+      const player = await axios.get(`${API_URL}/players/user/${userData.id}`);
       const dataPlayer = player.data;
 
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/players/${dataPlayer.id}`);
+      await axios.delete(`${API_URL}/players/${dataPlayer.id}`);
       navigate("/principal");
 
 
@@ -65,13 +66,13 @@ const VistaJuego = () => {
 
   const TerminarPartida = async () => {
     try {    
-      const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+      const juego = await axios.get(`${API_URL}/games`);
       const IdJuego = juego.data.id;
 
       const terminada = {
         estado: "Terminada"
       }
-      await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/games/${IdJuego}`, terminada);
+      await axios.patch(`${API_URL}/games/${IdJuego}`, terminada);
 
     } catch (error) {
       console.log(error);
@@ -81,15 +82,15 @@ const VistaJuego = () => {
 
   const EliminarPartida = async () => {
     try {
-      const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+      const juego = await axios.get(`${API_URL}/games`);
       const IdJuego = juego.data.id;
 
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/plays/AllGame/${IdJuego}`);
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/players/AllGame/${IdJuego}`);
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/boxes/AllGame/${IdJuego}`);
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/objects`);
+      await axios.delete(`${API_URL}/plays/AllGame/${IdJuego}`);
+      await axios.delete(`${API_URL}/players/AllGame/${IdJuego}`);
+      await axios.delete(`${API_URL}/boxes/AllGame/${IdJuego}`);
+      await axios.delete(`${API_URL}/objects`);
 
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/games/${IdJuego}`);
+      await axios.delete(`${API_URL}/games/${IdJuego}`);
 
     } catch (error) {
       console.log(error);
@@ -100,10 +101,10 @@ const VistaJuego = () => {
   useEffect(() => {
 
     const admin = async () => {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+      const response = await axios.get(`${API_URL}/users/me`, {headers});
       const userData = response.data;
 
-      const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+      const player = await axios.get(`${API_URL}/players/user/${userData.id}`);
       const dataPlayer = player.data;
       SetplayerColor(dataPlayer.color);
 
@@ -113,7 +114,7 @@ const VistaJuego = () => {
     admin();
 
     const updateEstado = async () => {
-      const game = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+      const game = await axios.get(`${API_URL}/games`);
       const EstadoGame = game.data.estado;
 
       if (EstadoGame != 'Activa' && EstadoGame != null){

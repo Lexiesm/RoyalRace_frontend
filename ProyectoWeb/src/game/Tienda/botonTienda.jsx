@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './Tienda.css';
 import axios from 'axios';
 import PopUpAlerta from "../Alertas/Alertas";
+import API_URL from '../../../config';
 
 export default function BotonTienda({ tipo_objeto, handleClose }) {
   const [data, setData] = useState(null);
@@ -17,10 +18,10 @@ export default function BotonTienda({ tipo_objeto, handleClose }) {
 
     const IdPlayer = async () => {
     try {
-      const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+      const response1 = await axios.get(`${API_URL}/users/me`, {headers});
       const userData = response1.data;
 
-      const Player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+      const Player = await axios.get(`${API_URL}/players/user/${userData.id}`);
       const DataPlayer = Player.data;
       setIdPlayer(DataPlayer.id);
     } catch (error) {
@@ -32,7 +33,7 @@ export default function BotonTienda({ tipo_objeto, handleClose }) {
 
   const handleClick = () => {
 
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/objects`, {
+    axios.post(`${API_URL}/objects`, {
        id_player: IdPlayer,
        tipo_objeto: tipo_objeto
      })

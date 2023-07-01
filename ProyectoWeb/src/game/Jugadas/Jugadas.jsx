@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Jugadas.css';
 import axios from 'axios';
+import API_URL from '../../../config';
 
 
 const PopUpJugadas = ({ handleClose, show }) => {
@@ -12,8 +13,8 @@ const PopUpJugadas = ({ handleClose, show }) => {
     const updateJugadas = async () => {
 
       try{
-        const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
-        const respuesta = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/plays/${juego.data.id}`);
+        const juego = await axios.get(`${API_URL}/games`);
+        const respuesta = await axios.get(`${API_URL}/plays/${juego.data.id}`);
         setJugadas(respuesta.data);
       } catch (error){
         console.log(error);

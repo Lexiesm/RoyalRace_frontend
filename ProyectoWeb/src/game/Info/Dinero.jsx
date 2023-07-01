@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Info.css';
 import axios from 'axios';
 import coin from '../../assets/icons/coin.png';
+import API_URL from '../../../config';
 
 
 
@@ -17,11 +18,11 @@ const Dinero = () => {
   useEffect(() => {
     const updateDinero = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+        const response = await axios.get(`${API_URL}/users/me`, {headers});
         const userData = response.data;
         setId(userData.id);
 
-        const playe = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+        const playe = await axios.get(`${API_URL}/players/user/${userData.id}`);
         const data = playe.data;
         setDinero(data.dinero);
 
