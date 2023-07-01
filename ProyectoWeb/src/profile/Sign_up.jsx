@@ -80,7 +80,7 @@ function Signup() {
                 <label>
                     Contraseña:
                     <input
-                        type="clave"
+                        type="password"
                         name="clave"
                         value={clave}
                         onChange={e => setPassword(e.target.value)}

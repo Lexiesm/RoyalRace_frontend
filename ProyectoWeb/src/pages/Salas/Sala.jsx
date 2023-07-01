@@ -9,7 +9,7 @@ export default function Sala() {
     const navigate = useNavigate();
 
 
-    const [id, setId] = useState("");
+    const [Id, setId] = useState("");
     const [availableColors, setAvailableColors] = useState(["rojo", "verde", "azul", "amarillo"]);
     const [coloresDisponibles, setColoresDisponibles] = useState(true);
     const [salaLlena, setSalaLlena] = useState(false);
@@ -36,38 +36,11 @@ export default function Sala() {
         fetchExistingPlayers();
     }, []);
 
-    // const handleCrearSala = async () => {
-    //     try {
-    //         if (!coloresDisponibles) {
-    //             alert("La sala está llena");
-    //             return;
-    //         } else {
-    //         const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
-    //         const userData = response1.data;
-    //         const id = userData.id;
 
-    //         const playerData = {
-    //             id_user: id,
-    //             id_game: 1,
-    //             color: availableColors[0], // Asigna el primer color disponible
-    //             vidas: 3,
-    //             dinero: 50
-    //         }
-        
-    //         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/players`, playerData);
-    //         navigate('/principal/sala/crear_sala');
-        
-    //     };
-
-            
-
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
-
-    const handleUnirseSala = async () => {
+    const handleUnirseSala = async () => { 
+        let IdDataJuego = "";
         try {
+            
             if (!coloresDisponibles) {
                 alert("La sala está llena");
                 return;
@@ -75,20 +48,56 @@ export default function Sala() {
             const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
             const userData = response1.data;
             const id = userData.id;
+            console.log(id);
+            console.log(availableColors);
+        
+                if (availableColors[0] === "rojo") { 
+
+                    const TurnoActual = {
+                        turno_actual: "rojo"
+                    }
+                    const juego = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/games`, TurnoActual);
+                    IdDataJuego = juego.data.id;    
+                    
+                    const Datos = {
+                        id_game: IdDataJuego
+                    }
+                    
+                    await axios.post(`${import.meta.env.VITE_BACKEND_URL}/boxes`, Datos);          
+
+                } else {
+                    const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+                    IdDataJuego = juego.data.id;
+                }
+ 
+
 
             const playerData = {
                 id_user: id,
-                id_game: 1,
+                id_game: IdDataJuego,
                 color: availableColors[0], // Asignar el primer color disponible
                 vidas: 3,
                 dinero: 50
             }
+
+            if (playerData.color == "rojo"){
+                playerData.posicion_x = 1;
+                playerData.posicion_y = 1;
+            } else if (playerData.color == "amarillo"){
+                playerData.posicion_x = 1;
+                playerData.posicion_y = 9;
+            } else if (playerData.color == "verde"){
+                playerData.posicion_x = 9;
+                playerData.posicion_y = 1;
+            } else if (playerData.color == "azul"){
+                playerData.posicion_x = 9;
+                playerData.posicion_y = 9;
+            };
         
-            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/players`, playerData);
+            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/players`, playerData);
             navigate('/principal/sala/crear_sala');
         
         };
-
           
 
         } catch (error) {
@@ -107,6 +116,7 @@ export default function Sala() {
                 </Link> */}
                 <Link className="play-button" onClick={handleUnirseSala}>
                     Unirse a una sala
+
                 </Link>
                 <br />
             </div>
