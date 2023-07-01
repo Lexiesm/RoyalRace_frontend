@@ -12,6 +12,7 @@ import Vidas from '../Info/Vidas';
 import ColorJugador from '../Info/Color';
 import axios from 'axios';
 
+
 import './VistaJuego.css';
 
 const VistaJuego = () => {
@@ -22,6 +23,13 @@ const VistaJuego = () => {
   const [showPopupTienda, setShowPopupTienda] = useState(false);
   const [showPopupFinal, setShowPopupFinal] = useState(false);
   const [EstadoPartida, SetEstadoPartida] = useState("");
+  const [playerColor, SetplayerColor] = useState("");
+
+  const token = localStorage.getItem('token');
+
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
 
   const togglePopupJugadas = () => {
     setShowPopupJugadas(!showPopupJugadas);
@@ -34,6 +42,41 @@ const VistaJuego = () => {
   };
   const togglePopupFinal = () => {
     setShowPopupFinal(!showPopupFinal);
+  };
+
+
+  const PlayerEspectador = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+      const userData = response.data;
+
+      const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+      const dataPlayer = player.data;
+
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/players/${dataPlayer.id}`);
+      navigate("/principal");
+
+
+    } catch (error) {
+      console.log(error);
+      
+    }
+  };
+
+  const TerminarPartida = async () => {
+    try {    
+      const juego = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
+      const IdJuego = juego.data.id;
+
+      const terminada = {
+        estado: "Terminada"
+      }
+      await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/games/${IdJuego}`, terminada);
+
+    } catch (error) {
+      console.log(error);
+      
+    }
   };
 
   const EliminarPartida = async () => {
@@ -56,6 +99,19 @@ const VistaJuego = () => {
 
   useEffect(() => {
 
+    const admin = async () => {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {headers});
+      const userData = response.data;
+
+      const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`);
+      const dataPlayer = player.data;
+      SetplayerColor(dataPlayer.color);
+
+      
+    }
+
+    admin();
+
     const updateEstado = async () => {
       const game = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games`);
       const EstadoGame = game.data.estado;
@@ -70,7 +126,7 @@ const VistaJuego = () => {
           navigate("/principal");
           EliminarPartida();
 
-        }, 15000);
+        }, 5000);
       }
 
     };
@@ -112,7 +168,10 @@ const VistaJuego = () => {
             <PopUpFinal estado = {EstadoPartida} show={showPopupFinal} handleClose={togglePopupFinal}>
             </PopUpFinal>
 
-            {/* <button className="basic-button" href = "/principal" onClick={EliminarPartida}> Salir </button> */}
+            <button className="basic-button" href= "/principal" onClick={PlayerEspectador}> Salir </button>
+            <button className="basic-button" onClick={TerminarPartida}>
+                Terminar partida
+            </button>
           </div>
         </div>
       </div>

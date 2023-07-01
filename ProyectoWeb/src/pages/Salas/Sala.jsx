@@ -49,6 +49,7 @@ export default function Sala() {
             const userData = response1.data;
             const id = userData.id;
             console.log(id);
+            console.log(availableColors);
         
                 if (availableColors[0] === "rojo") { 
 
@@ -93,7 +94,7 @@ export default function Sala() {
                 playerData.posicion_y = 9;
             };
         
-            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/players`, playerData);
+            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/players`, playerData);
             navigate('/principal/sala/crear_sala');
         
         };

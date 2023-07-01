@@ -28,7 +28,7 @@ const Crear_sala = () => {
 
         setId(userData.id);
 
-        const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/${userData.id}`)
+        const player = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/players/user/${userData.id}`)
         const playe = player.data;
         setIdGame(playe.id_game);
         setColor(playe.color);
