@@ -6,22 +6,4 @@
     grid-template-rows: repeat(9, 3.5rem);
     
 }
-
-.basic-button {
-    padding: 10px 20px;
-    background: #91be1d;
-    transition: all 0.1s ease-in;
-    text-decoration: none;
-    border-radius: 7px;
-    color: black;
-    margin-bottom: 15px;
-    margin-top: 15px;
-    margin-left: 5px;
-    margin-right: 5px;
-    cursor: pointer;
-}
-
-.basic-button:hover {
-    background-color: black;
-    color: #91be1d;
-}
+/*background-color: black;*/
